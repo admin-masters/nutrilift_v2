@@ -1,0 +1,3210 @@
+{
+  "English": {
+    "1": {
+      "A": "Title: Student Growth & Nutritional Risk Assessment Screening Form"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "SECTION A: PARTICULARS"
+    },
+    "8": {
+      "A": "Date & Time",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "Teacher ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "School / Class / Section",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "Student Name",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "Unique Student ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "Date of Birth (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "Sex",
+      "B": "Male / Female"
+    },
+    "15": {
+      "A": "Parent WhatsApp No.",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "Section B: Anthropometry"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "Question",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. Weight (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. Height (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. Colour of Tape in MUAC",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "Check box - Tape color Red",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "Check box - Tape color Yellow",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "Check box - Tape color Green"
+    },
+    "28": {
+      "A": "5. Age: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [Auto-calc] (5-18years)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "Section C: Quick Health Red Flags"
+    },
+    "34": {
+      "A": "Teacher Observation (Last 4 weeks). ",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "General Health is poor",
+      "B": "Ask the child - Do you feel healthy?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "Pallor (pale inside eyelids/palms)",
+      "B": "Does the child have pallor?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "Fatigue, dizziness, or fainting",
+      "B": "Ask the child if they rememer having fainted while doing normal work/play, or if the child feels very too tired to do routine work/play?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "Breathlessness on exertion",
+      "B": "Ask the child if they feel breathless on doing routine activities or while walking normally?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "Frequent infections (3 or more in last month)",
+      "B": "Does the child fall sick very often? Has been ill 3 times or more in the last month?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "Chronic cough or chronic diarrhea",
+      "B": "Does the child have cough and has had it for last 4 weeks or more, or does the child have loose motions and it has lasted more than 2 weeks? ",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "Visible worm passage",
+      "B": "Ask the child if they have ever seen small worms in their stool.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "Dental caries, gum bleeding, or mouth ulcers",
+      "B": "Ask the child if they have teeth pain, gum bleeding or mouth ulcers?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "Night vision difficulty (stumbling in dim light)",
+      "B": "Ask the child if they stumble while walking in the dark since they can't see properly",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "Bone or Joint pains",
+      "B": "Ask the child if they have pain in their arms/legs/joints, although they haven't been hurt and even without hard work/play? ",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "Appetite",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "Does the child not feel like eating and never feels hungry? ",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "Adolescent Girls (Age ≥10 only)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "Has Menarche started? ",
+      "B": "Check box - Ask the child if her menstruation has started"
+    },
+    "51": {
+      "A": "Age at 1st period (years)",
+      "B": "Age drop down- years  - Ask the child Menstruation started at what age?"
+    },
+    "52": {
+      "A": "Heavy bleeding (Soaking ≥5 pads/day or passing clots)?",
+      "B": " Drop down 1-10 - Ask the child how many pads per day does she need on heavy bleeding days.",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "Drop down yes/no - Does the child pass clots while bleeding?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "Irregular cycles (>45 days apart)? ",
+      "B": "Drop down - less than 45 days, more than 45 days - After how many days do your menses happen again?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "How many days does the bleeding last?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "Section D: Diet Type & Diversity"
+    },
+    "58": {
+      "A": "Usual Diet Type ",
+      "B": "( ) Lacto-vegetarian ",
+      "C": "Must check one",
+      "E": "Do you drink milk or eat dahi or paneer at home?"
+    },
+    "59": {
+      "B": "( ) Lacto-ovo-vegetarian (eats eggs) ",
+      "E": "Do you eat eggs at home?"
+    },
+    "60": {
+      "B": "( ) Non-vegetarian",
+      "E": "Do you eat fish, chicken or mutton at home?"
+    },
+    "61": {
+      "A": "24-Hour Recall (Yesterday) Did the student eat the following yesterday?",
+      "E": "What food did you eat yesterday?"
+    },
+    "62": {
+      "A": "Meals:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "Breakfast eaten?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "Did you eat Breakfast?"
+    },
+    "65": {
+      "A": "Lunch eaten at school?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "Did you eat Lunch?"
+    },
+    "67": {
+      "A": "Food Groups :",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "Green leafy veg (Palak/Methi/Amaranth)",
+      "E": "Did you eat green leafy vegetables in your last meal?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "Other vegetables",
+      "E": "Did you eat any other vegetable in your last meal?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "Fruits",
+      "E": "Did you eat fruits yesterday?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "Dal / Pulses / Beans",
+      "E": "Did you eat Dal / Pulses / Beans yesterday?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "Milk / Curd",
+      "B": " ",
+      "E": "Did you drink milk or eat curd yesterday? "
+    },
+    "77": {
+      "B": "Check Box No",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "Egg",
+      "B": "Check box Yes",
+      "E": "Did you eat egg yesterday?"
+    },
+    "79": {
+      "B": "Check Box No",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "Fish / Chicken / Meat",
+      "B": "Check box Yes",
+      "E": "Did you eat Fish / Chicken / Meat in the the last 3 days?"
+    },
+    "81": {
+      "B": "Check Box No",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "Nuts / Groundnuts",
+      "B": "Check box Yes",
+      "E": "Did you eat Nuts / Groundnuts yesterday?"
+    },
+    "83": {
+      "B": "Check Box No",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "Negative Check:"
+    },
+    "87": {
+      "A": "SSB (Sugary Drinks) or Packaged Snacks eaten?",
+      "B": "Check box Yes",
+      "C": "Red Flag",
+      "E": "Do you drink soft drinks like coca cola, pepsi, mirinda, fanta, limca etc.? Do you drink fruit juice that is not made at home? Do you eat snacks like biscuits, chocolates, chips, cakes etc.?"
+    },
+    "88": {
+      "B": "Check Box No",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "Section E: Program Enablers"
+    },
+    "90": {
+      "A": "Deworming",
+      "B": "Yes ",
+      "E": "Did you take the big pill for deworming?"
+    },
+    "91": {
+      "A": "Taken in last 6-12 months? ",
+      "B": "No",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "If Yes, approx date: [DD/MM/YYYY]",
+      "B": "Don't know",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "Section F: Food Security"
+    },
+    "94": {
+      "A": "Hunger Vital Sign (Last 12 months)"
+    },
+    "95": {
+      "A": "\"We get enough food at home.\" ",
+      "B": "( ) Often true",
+      "E": "Do you always get as much food as you want to eat at home?"
+    },
+    "96": {
+      "B": "( ) Sometimes true (RED FLAG) ",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) Never true (RED Flag)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Hindi": {
+    "1": {
+      "A": "शीर्षक: छात्र की बढ़त और पोषण-जोखिम आकलन स्क्रीनिंग फॉर्म"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "सेक्शन A: विवरण"
+    },
+    "8": {
+      "A": "तारीख और समय",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "टीचर ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "स्कूल / कक्षा / सेक्शन",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "बच्चे का नाम",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "यूनिक स्टूडेंट ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "जन्म तिथि (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "लिंग",
+      "B": "लड़का / लड़की"
+    },
+    "15": {
+      "A": "अभिभावक का WhatsApp नंबर",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "सेक्शन B: शरीर माप (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "प्रश्न",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. वजन (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. लंबाई/ऊंचाई (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC टेप का रंग",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "चेकबॉक्स - टेप का रंग: लाल",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "चेकबॉक्स - टेप का रंग: पीला",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "चेकबॉक्स - टेप का रंग: हरा"
+    },
+    "28": {
+      "A": "5. उम्र: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [ऑटो-कैल्क] (5-18 साल)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "सेक्शन C: जल्दी स्वास्थ्य रेड फ्लैग"
+    },
+    "34": {
+      "A": "टीचर का अवलोकन (पिछले 4 हफ्ते)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "सामान्य सेहत ठीक नहीं",
+      "B": "बच्चे से पूछें: क्या तुम खुद को स्वस्थ महसूस करते/करती हो?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "पीलापन (पलक/हथेली अंदर से पीली)",
+      "B": "क्या बच्चे में पीलापन है?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "थकान, चक्कर, या बेहोशी",
+      "B": "बच्चे से पूछें: सामान्य काम/खेलते समय कभी बेहोशी आई है, या रोज़मर्रा के काम/खेल के लिए बहुत ज्यादा थकान लगती है?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "चलने/मेहनत पर सांस फूलना",
+      "B": "बच्चे से पूछें: सामान्य काम करते या सामान्य चलने पर सांस फूलती है क्या?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "बार-बार इंफेक्शन (पिछले महीने में 3 या ज्यादा)",
+      "B": "क्या बच्चा बहुत बार बीमार पड़ता है? क्या पिछले महीने में 3 बार या उससे ज्यादा बीमार हुआ है?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "लंबे समय से खांसी या दस्त",
+      "B": "क्या बच्चे को खांसी है और 4 हफ्तों से ज्यादा से चल रही है, या बच्चे को दस्त हैं और 2 हफ्तों से ज्यादा से चल रहे हैं?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "पाखाने में कीड़े दिखना",
+      "B": "बच्चे से पूछें: क्या कभी पाखाने में छोटे कीड़े देखे हैं?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "दांत में कीड़ा/कैविटी, मसूड़ों से खून, या मुंह में छाले",
+      "B": "बच्चे से पूछें: दांत दर्द, मसूड़ों से खून, या मुंह में छाले हैं क्या?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "रात में देखने में दिक्कत (कम रोशनी में ठोकर लगना)",
+      "B": "बच्चे से पूछें: कम रोशनी/अंधेरे में ठीक से नहीं दिखने के कारण चलते समय ठोकर लगती है क्या?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "हड्डी या जोड़ों में दर्द",
+      "B": "बच्चे से पूछें: बिना चोट लगे और बिना ज्यादा खेल/काम के भी हाथ/पैर/जोड़ों में दर्द होता है क्या?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "भूख",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "क्या बच्चे को खाने का मन नहीं करता और भूख नहीं लगती?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "किशोरी लड़कियाँ (उम्र ≥10 साल)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "क्या पीरियड्स शुरू हुए हैं?",
+      "B": "चेकबॉक्स - बच्ची से पूछें: क्या पीरियड्स शुरू हुए हैं?"
+    },
+    "51": {
+      "A": "पहला पीरियड किस उम्र में (साल)",
+      "B": "उम्र ड्रॉपडाउन (साल) - बच्ची से पूछें: पीरियड्स किस उम्र में शुरू हुए?"
+    },
+    "52": {
+      "A": "बहुत ज्यादा ब्लीडिंग (दिन में ≥5 पैड भर जाना या थक्के आना)?",
+      "B": "ड्रॉपडाउन 1-10 - बच्ची से पूछें: ज्यादा ब्लीडिंग वाले दिनों में दिन में कितने पैड लगते हैं?",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "ड्रॉपडाउन हाँ/नहीं - ब्लीडिंग के साथ थक्के (clots) आते हैं क्या?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "अनियमित पीरियड (दो पीरियड में >45 दिन का गैप)?",
+      "B": "ड्रॉपडाउन - 45 दिन से कम / 45 दिन से ज्यादा - पीरियड्स फिर कितने दिनों बाद आते हैं?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "ब्लीडिंग कितने दिन चलती है?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "सेक्शन D: डाइट का प्रकार और विविधता"
+    },
+    "58": {
+      "A": "आमतौर पर डाइट का प्रकार",
+      "B": "( ) शाकाहारी (दूध/दही लेते हैं)",
+      "C": "Must check one",
+      "E": "क्या घर पर दूध पीते हो या दही/पनीर खाते हो?"
+    },
+    "59": {
+      "B": "( ) शाकाहारी + अंडा (अंडा खाते हैं)",
+      "E": "क्या घर पर अंडा खाते हो?"
+    },
+    "60": {
+      "B": "( ) नॉन-वेज (मांस/मछली खाते हैं)",
+      "E": "क्या घर पर मछली, चिकन या मटन खाते हो?"
+    },
+    "61": {
+      "A": "24-घंटे की याद (कल): क्या बच्चे ने कल नीचे की चीजें खाईं?",
+      "E": "तुमने कल क्या-क्या खाया?"
+    },
+    "62": {
+      "A": "भोजन:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "नाश्ता किया?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "क्या तुमने नाश्ता किया?"
+    },
+    "65": {
+      "A": "स्कूल में लंच खाया?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "क्या तुमने लंच किया?"
+    },
+    "67": {
+      "A": "फूड ग्रुप्स:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "हरी पत्तेदार सब्ज़ी (पालक/मेथी/चौलाई)",
+      "E": "क्या तुमने अपने पिछले खाने में हरी पत्तेदार सब्ज़ी खाई?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "अन्य सब्ज़ियाँ",
+      "E": "क्या तुमने अपने पिछले खाने में कोई और सब्ज़ी खाई?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "फल",
+      "E": "क्या तुमने कल फल खाए?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "दाल / चना / राजमा",
+      "E": "क्या तुमने कल दाल/चना/राजमा खाया?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "दूध / दही",
+      "B": " ",
+      "E": "क्या तुमने कल दूध पिया या दही खाया?"
+    },
+    "77": {
+      "B": "चेकबॉक्स: नहीं",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "अंडा",
+      "B": "चेकबॉक्स: हाँ",
+      "E": "क्या तुमने कल अंडा खाया?"
+    },
+    "79": {
+      "B": "चेकबॉक्स: नहीं",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "मछली / चिकन / मांस",
+      "B": "चेकबॉक्स: हाँ",
+      "E": "क्या तुमने पिछले 3 दिनों में मछली/चिकन/मांस खाया?"
+    },
+    "81": {
+      "B": "चेकबॉक्स: नहीं",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "मेवे / मूंगफली",
+      "B": "चेकबॉक्स: हाँ",
+      "E": "क्या तुमने कल मेवे/मूंगफली खाई?"
+    },
+    "83": {
+      "B": "चेकबॉक्स: नहीं",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "नेगेटिव चेक:"
+    },
+    "87": {
+      "A": "मीठे ड्रिंक (SSB) या पैकेट स्नैक खाए?",
+      "B": "चेकबॉक्स: हाँ",
+      "C": "Red Flag",
+      "E": "क्या तुम कोक/पेप्सी/मिरिंडा/फैंटा/लिम्का जैसे सॉफ्ट ड्रिंक पीते हो? क्या तुम बाहर का (घर का नहीं) फलों का जूस पीते हो? क्या तुम बिस्किट, चॉकलेट, चिप्स, केक जैसे स्नैक्स खाते हो?"
+    },
+    "88": {
+      "B": "चेकबॉक्स: नहीं",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "सेक्शन E: प्रोग्राम सपोर्ट"
+    },
+    "90": {
+      "A": "कृमिनाशक (Deworming)",
+      "B": "हाँ",
+      "E": "क्या तुमने कीड़े की दवा वाली बड़ी गोली ली थी?"
+    },
+    "91": {
+      "A": "पिछले 6-12 महीनों में लिया था?",
+      "B": "नहीं",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "अगर हाँ, लगभग तारीख: [DD/MM/YYYY]",
+      "B": "पता नहीं",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "सेक्शन F: फूड सिक्योरिटी (खाने की उपलब्धता)"
+    },
+    "94": {
+      "A": "भूख का सवाल (पिछले 12 महीने)"
+    },
+    "95": {
+      "A": "\"घर पर हमें पर्याप्त खाना मिलता है।\"",
+      "B": "( ) अक्सर सही",
+      "E": "क्या घर पर तुम्हें जितना चाहो उतना खाना हमेशा मिलता है?"
+    },
+    "96": {
+      "B": "( ) कभी-कभी सही (रेड फ्लैग)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) कभी भी सही नहीं (रेड फ्लैग)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Tamil": {
+    "1": {
+      "A": "தலைப்பு: மாணவர் வளர்ச்சி & ஊட்டச்சத்து அபாய மதிப்பீடு ஸ்கிரீனிங் படிவம்"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "பகுதி A: விவரங்கள்"
+    },
+    "8": {
+      "A": "தேதி & நேரம்",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "ஆசிரியர் ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "பள்ளி / வகுப்பு / பிரிவு",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "மாணவர் பெயர்",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "யூனிக் மாணவர் ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "பிறந்த தேதி (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "பாலினம்",
+      "B": "ஆண் / பெண்"
+    },
+    "15": {
+      "A": "பெற்றோர் WhatsApp எண்",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "பகுதி B: உடல் அளவுகள் (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "கேள்வி",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. எடை (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. உயரம் (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC டேப் நிறம்",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "செக் பாக்ஸ் - டேப் நிறம்: சிவப்பு",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "செக் பாக்ஸ் - டேப் நிறம்: மஞ்சள்",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "செக் பாக்ஸ் - டேப் நிறம்: பச்சை"
+    },
+    "28": {
+      "A": "5. வயது: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [ஆட்டோ-கால்க்] (5-18 வயது)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "பகுதி C: உடனடி சுகாதார ரெட் ஃப்ளாக்ஸ்"
+    },
+    "34": {
+      "A": "ஆசிரியர் கவனிப்பு (கடந்த 4 வாரங்கள்)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "பொதுவான உடல்நிலை சரியில்லை",
+      "B": "குழந்தையிடம் கேளுங்கள்: நீ உன்னை ஆரோக்கியமாக உணர்கிறாயா?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "சோகை (கண் இமைகள்/கைத் தளத்தில் வெளிர்ச்சி)",
+      "B": "குழந்தைக்கு சோகை (pallor) இருக்கிறதா?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "அதிக களைப்பு, தலைசுற்றல், அல்லது மயக்கம்",
+      "B": "சாதாரண வேலை/விளையாடும்போது மயக்கம் வந்ததா, அல்லது சாதாரணமாக வேலை/விளையாட முடியாத அளவுக்கு அதிகமாக களைப்பா இருக்கிறதா என்று கேளுங்கள்.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "உழைப்பில்/நடக்கும்போது மூச்சுத் திணறல்",
+      "B": "சாதாரண வேலை செய்வதோடு அல்லது சாதாரணமாக நடக்கும்போது மூச்சுத் திணறலா என்று கேளுங்கள்.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "அடிக்கடி தொற்று (கடந்த மாதத்தில் 3 முறை அல்லது அதிகம்)",
+      "B": "குழந்தைக்கு அடிக்கடி உடல்நலக்குறைவு வருகிறதா? கடந்த மாதத்தில் 3 முறை அல்லது அதற்கு மேல் நோய்பட்டதா?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "நீண்ட நாட்களாக இருமல் அல்லது வயிற்றுப்போக்கு",
+      "B": "குழந்தைக்கு இருமல் இருந்து கடந்த 4 வாரங்கள் அல்லது அதற்கு மேல் தொடருகிறதா? அல்லது வயிற்றுப்போக்கு 2 வாரங்களுக்கும் மேல் நீடிக்கிறதா?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "மலத்தில் புழுக்கள் காணப்படுதல்",
+      "B": "மலம் போகும்போது சிறிய புழுக்கள் பார்த்திருக்கிறாயா என்று கேளுங்கள்.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "பல் சொத்தை, ஈறு இரத்தம், அல்லது வாயில் புண்கள்",
+      "B": "பல் வலி, ஈறு இரத்தம் வருவது, அல்லது வாயில் புண்கள் உள்ளதா என்று கேளுங்கள்.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "இரவு பார்வை சிரமம் (மங்கிய வெளிச்சத்தில் தடுமாறுவது)",
+      "B": "இருட்டில் சரியாகப் பார்க்க முடியாததால் நடக்கும்போது தடுமாறுகிறாயா என்று கேளுங்கள்.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "எலும்பு அல்லது மூட்டு வலி",
+      "B": "காயம் இல்லாமலும் அதிகமாக விளையாடாமலும் கைகள்/கால்கள்/மூட்டுகளில் வலி இருக்கிறதா என்று கேளுங்கள்.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "பசி",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "குழந்தைக்கு சாப்பிட மனசே இல்லாமலும் பசி இல்லாமலும் இருக்கிறதா?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "இளம்பெண்கள் (வயது ≥10 மட்டும்)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "பீரியட் தொடங்கியிருக்கிறதா?",
+      "B": "செக் பாக்ஸ் - உனக்கு பீரியட் தொடங்கியதா என்று கேளுங்கள்."
+    },
+    "51": {
+      "A": "முதல் பீரியட் வந்த வயது (ஆண்டு)",
+      "B": "வயது ட்ராப்-டவுன் (ஆண்டு) - பீரியட் எந்த வயதில் தொடங்கியது என்று கேளுங்கள்."
+    },
+    "52": {
+      "A": "அதிக ரத்தப்போக்கு (நாளுக்கு ≥5 பேட்ஸ் நனைந்து போகுதல் அல்லது கட்டிகள் வருதல்)?",
+      "B": "ட்ராப்-டவுன் 1-10 - அதிக ரத்தப்போக்கு நாட்களில் ஒரு நாளில் எத்தனை பேடு தேவை என்று குழந்தையிடம் கேளுங்கள்.",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "ட்ராப்-டவுன் ஆம்/இல்லை - ரத்தப்போக்கில் கட்டிகள் (clots) வருகிறதா?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "மாதவிடாய் ஒழுங்கில்லை (>45 நாட்கள் இடைவெளி)?",
+      "B": "ட்ராப்-டவுன் - 45 நாட்களுக்கு குறைவு / 45 நாட்களுக்கு மேல் - பீரியட் மீண்டும் எத்தனை நாட்களுக்கு பிறகு வருகிறது?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "ரத்தப்போக்கு எத்தனை நாட்கள் நீடிக்கிறது?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "பகுதி D: டயட் வகை & பல்வகை"
+    },
+    "58": {
+      "A": "பொதுவான டயட் வகை",
+      "B": "( ) லாக்டோ வெஜ் (பால்/தயிர் சாப்பிடுவார்)",
+      "C": "Must check one",
+      "E": "வீட்டில் பால் குடிப்பாயா அல்லது தயிர்/பனீர் சாப்பிடுவாயா?"
+    },
+    "59": {
+      "B": "( ) லாக்டோ-ஓவோ வெஜ் (முட்டை சாப்பிடுவார்)",
+      "E": "வீட்டில் முட்டை சாப்பிடுவாயா?"
+    },
+    "60": {
+      "B": "( ) நான்-வெஜ் (மீன்/சிக்கன்/மாம்சம்)",
+      "E": "வீட்டில் மீன், சிக்கன் அல்லது மட்டன் சாப்பிடுவாயா?"
+    },
+    "61": {
+      "A": "24 மணி நினைவு (நேற்று): குழந்தை நேற்று கீழே உள்ளவற்றை சாப்பிட்டதா?",
+      "E": "நீ நேற்று என்ன என்ன சாப்பிட்டாய்?"
+    },
+    "62": {
+      "A": "உணவுகள்:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "காலை உணவு சாப்பிட்டாயா?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "நீ காலை உணவு சாப்பிட்டாயா?"
+    },
+    "65": {
+      "A": "பள்ளியில் மதிய உணவு சாப்பிட்டாயா?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "நீ மதிய உணவு சாப்பிட்டாயா?"
+    },
+    "67": {
+      "A": "உணவு குழுக்கள்:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "பச்சைக் கீரை வகைகள் (பாலக்/மேத்தி/அமராந்த்)",
+      "E": "உன் கடைசி உணவில் கீரை வகைகள் சாப்பிட்டாயா?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "மற்ற காய்கறிகள்",
+      "E": "உன் கடைசி உணவில் வேறு எந்தக் காய்கறியும் சாப்பிட்டாயா?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "பழங்கள்",
+      "E": "நீ நேற்று பழம் சாப்பிட்டாயா?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "பருப்பு / பயறு / பீன்ஸ்",
+      "E": "நீ நேற்று பருப்பு/பயறு/பீன்ஸ் சாப்பிட்டாயா?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "பால் / தயிர்",
+      "B": " ",
+      "E": "நீ நேற்று பால் குடித்தாயா அல்லது தயிர் சாப்பிட்டாயா?"
+    },
+    "77": {
+      "B": "செக் பாக்ஸ்: இல்லை",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "முட்டை",
+      "B": "செக் பாக்ஸ்: ஆம்",
+      "E": "நீ நேற்று முட்டை சாப்பிட்டாயா?"
+    },
+    "79": {
+      "B": "செக் பாக்ஸ்: இல்லை",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "மீன் / சிக்கன் / மாம்சம்",
+      "B": "செக் பாக்ஸ்: ஆம்",
+      "E": "கடந்த 3 நாட்களில் நீ மீன்/சிக்கன்/மாம்சம் சாப்பிட்டாயா?"
+    },
+    "81": {
+      "B": "செக் பாக்ஸ்: இல்லை",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "கொட்டைகள் / வேர்க்கடலை",
+      "B": "செக் பாக்ஸ்: ஆம்",
+      "E": "நீ நேற்று கொட்டைகள் அல்லது வேர்க்கடலை சாப்பிட்டாயா?"
+    },
+    "83": {
+      "B": "செக் பாக்ஸ்: இல்லை",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "நெகட்டிவ் செக்:"
+    },
+    "87": {
+      "A": "சர்க்கரை பானங்கள் (SSB) அல்லது பேக்கேஜ் ஸ்நாக்ஸ் சாப்பிட்டதா?",
+      "B": "செக் பாக்ஸ்: ஆம்",
+      "C": "Red Flag",
+      "E": "நீ கோகா கோலா, பெப்ஸி, மிரிண்டா, ஃபாண்டா, லிம்கா போன்ற சாஃப்ட் டிரிங்க்ஸ் குடிப்பாயா? வீட்டில் செய்யாத பழச்சாறு குடிப்பாயா? பிஸ்கட், சாக்லெட், சிப்ஸ், கேக் போன்ற ஸ்நாக்ஸ் சாப்பிடுவாயா?"
+    },
+    "88": {
+      "B": "செக் பாக்ஸ்: இல்லை",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "பகுதி E: திட்ட உதவிகள்"
+    },
+    "90": {
+      "A": "புழு மருந்து (Deworming)",
+      "B": "ஆம்",
+      "E": "புழு மருந்துக்கான பெரிய மாத்திரையை எடுத்தாயா?"
+    },
+    "91": {
+      "A": "கடந்த 6-12 மாதங்களில் எடுத்தீர்களா?",
+      "B": "இல்லை",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "ஆம் என்றால், சுமார் தேதி: [DD/MM/YYYY]",
+      "B": "தெரியாது",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "பகுதி F: உணவு பாதுகாப்பு"
+    },
+    "94": {
+      "A": "பசி தொடர்பான கேள்வி (கடந்த 12 மாதங்கள்)"
+    },
+    "95": {
+      "A": "\"வீட்டில் எங்களுக்கு போதுமான உணவு கிடைக்கும்.\"",
+      "B": "( ) பெரும்பாலும் சரி",
+      "E": "வீட்டில் உனக்கு வேண்டிய அளவு உணவு எப்போதும் கிடைக்கிறதா?"
+    },
+    "96": {
+      "B": "( ) சில நேரம் சரி (ரெட் ஃப்ளாக்)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) ஒருபோதும் சரியில்லை (ரெட் ஃப்ளாக்)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Malayalam": {
+    "1": {
+      "A": "തലക്കെട്ട്: വിദ്യാർത്ഥി വളർച്ച & പോഷക റിസ്ക് അസസ്‌മെന്റ് സ്ക്രീനിംഗ് ഫോം"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "വിഭാഗം A: വിവരങ്ങൾ"
+    },
+    "8": {
+      "A": "തീയതി & സമയം",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "ടീച്ചർ ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "സ്കൂൾ / ക്ലാസ് / സെക്ഷൻ",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "വിദ്യാർത്ഥിയുടെ പേര്",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "യൂണിക് സ്റ്റുഡന്റ് ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "ജനന തീയതി (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "ലിംഗം",
+      "B": "ആൺ / പെൺ"
+    },
+    "15": {
+      "A": "രക്ഷിതാവിന്റെ WhatsApp നമ്പർ",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "വിഭാഗം B: ശരീര അളവുകൾ (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "ചോദ്യം",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. ഭാരം (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. ഉയരം (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC ടേപ്പിന്റെ നിറം",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "ചെക്ക് ബോക്സ് - ടേപ്പ് നിറം: ചുവപ്പ്",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "ചെക്ക് ബോക്സ് - ടേപ്പ് നിറം: മഞ്ഞ",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "ചെക്ക് ബോക്സ് - ടേപ്പ് നിറം: പച്ച"
+    },
+    "28": {
+      "A": "5. വയസ്: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [ഓട്ടോ-കാൽക്ക്] (5-18 വയസ്)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "വിഭാഗം C: ഹെൽത്ത് റെഡ് ഫ്ലാഗുകൾ (വേഗം)"
+    },
+    "34": {
+      "A": "ടീച്ചറുടെ നിരീക്ഷണം (കഴിഞ്ഞ 4 ആഴ്ച)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "പൊതു ആരോഗ്യം നല്ലതല്ല",
+      "B": "കുട്ടിയോട് ചോദിക്കുക: നിനക്ക് നിന്റെ ആരോഗ്യം നന്നാണ് എന്ന് തോന്നുന്നുണ്ടോ?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "വിളർച്ച (കണ്ണിന്റെ ഇമ/കൈപ്പത്തി ഉള്ളിൽ മങ്ങി തോന്നൽ)",
+      "B": "കുട്ടിക്ക് വിളർച്ച (pallor) ഉണ്ടോ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "ക്ഷീണം, തലചുറ്റൽ, അല്ലെങ്കിൽ ബോധക്ഷയം",
+      "B": "സാധാരണ ജോലി/കളിക്കുമ്പോൾ ബോധക്ഷയം ഉണ്ടായിട്ടുണ്ടോ, അല്ലെങ്കിൽ സാധാരണ ജോലി/കളി ചെയ്യാൻ പറ്റാത്തത്ര ക്ഷീണം തോന്നുന്നുണ്ടോ എന്ന് ചോദിക്കുക.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "പ്രയത്നത്തിൽ ശ്വാസം മുട്ടൽ",
+      "B": "സാധാരണ ജോലികൾ ചെയ്യുമ്പോൾ അല്ലെങ്കിൽ സാധാരണ നടക്കുമ്പോൾ ശ്വാസം മുട്ടുന്നുണ്ടോ എന്ന് ചോദിക്കുക.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "തുടർച്ചയായ ഇൻഫെക്ഷൻ (കഴിഞ്ഞ മാസത്തിൽ 3 പ്രാവശ്യം അല്ലെങ്കിൽ അധികം)",
+      "B": "കുട്ടിക്ക് വളരെ പലപ്പോഴും അസുഖം വരാറുണ്ടോ? കഴിഞ്ഞ മാസത്തിൽ 3 പ്രാവശ്യം അല്ലെങ്കിൽ അതിലധികം അസുഖപ്പെട്ടിട്ടുണ്ടോ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "ദീർഘകാല ചുമ അല്ലെങ്കിൽ തുടർച്ചയായ വയറിളക്കം",
+      "B": "കുട്ടിക്ക് ചുമ ഉണ്ടോ, അത് കഴിഞ്ഞ 4 ആഴ്ചയോ അതിൽ കൂടുതലോ തുടരുന്നുണ്ടോ? അല്ലെങ്കിൽ വയറിളക്കം 2 ആഴ്ചയ്ക്ക് മേൽ നീളുന്നുണ്ടോ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "മലത്തിൽ പുഴു കാണുക",
+      "B": "മലത്തിൽ ചെറിയ പുഴുക്കൾ കണ്ടിട്ടുണ്ടോ എന്ന് ചോദിക്കുക.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "പല്ല് പൊള്ളി/കുഴി, മംസത്തിൽ നിന്ന് രക്തം, അല്ലെങ്കിൽ വായിലെ പുണ്ണുകൾ",
+      "B": "പല്ലുവേദന, പല്ലുമംസത്തിൽ നിന്ന് രക്തം വരുക, അല്ലെങ്കിൽ വായിൽ പുണ്ണുകൾ ഉണ്ടോ എന്ന് ചോദിക്കുക.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "രാത്രി കാഴ്ച പ്രശ്നം (കുറഞ്ഞ വെളിച്ചത്തിൽ ഇടറൽ)",
+      "B": "ഇരുട്ടിൽ ശരിയായി കാണാൻ പറ്റാത്തതിനാൽ നടക്കുമ്പോൾ ഇടറുന്നുണ്ടോ എന്ന് ചോദിക്കുക.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "എല്ല്/സന്ധി വേദന",
+      "B": "പരിക്ക് ഇല്ലാതെയും കഠിനമായ കളി/ജോലി ഇല്ലാതെയും കൈ/കാലുകൾ/സന്ധികളിൽ വേദന ഉണ്ടോ എന്ന് ചോദിക്കുക.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "വിശപ്പ്",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "കുട്ടിക്ക് ഭക്ഷണം കഴിക്കാൻ ഇഷ്ടമില്ലാതെയും വിശപ്പ് ഇല്ലാതെയും ഉണ്ടോ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "കിശോരി പെൺകുട്ടികൾ (വയസ് ≥10 മാത്രം)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "പീരിയഡ് ആരംഭിച്ചിട്ടുണ്ടോ?",
+      "B": "ചെക്ക് ബോക്സ് - പീരിയഡ് തുടങ്ങി കഴിഞ്ഞോ എന്ന് കുട്ടിയോട് ചോദിക്കുക."
+    },
+    "51": {
+      "A": "ആദ്യ പീരിയഡ് വന്ന വയസ് (വർഷം)",
+      "B": "വയസ് ഡ്രോപ്പ്‌ഡൗൺ (വർഷം) - പീരിയഡ് ഏത് വയസിലാണ് തുടങ്ങിയത് എന്ന് ചോദിക്കുക."
+    },
+    "52": {
+      "A": "കൂടുതൽ രക്തസ്രാവം (ദിവസം ≥5 പാഡ് നനയുക അല്ലെങ്കിൽ കട്ടകൾ വരുക)?",
+      "B": "ഡ്രോപ്പ്‌ഡൗൺ 1-10 - കൂടുതൽ രക്തസ്രാവമുള്ള ദിവസങ്ങളിൽ ദിവസത്തിൽ എത്ര പാഡ് വേണം എന്ന് കുട്ടിയോട് ചോദിക്കുക.",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "ഡ്രോപ്പ്‌ഡൗൺ അതെ/ഇല്ല - രക്തസ്രാവത്തിൽ കട്ടകൾ (clots) വരാറുണ്ടോ?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "അനിയമിത പീരിയഡ് (>45 ദിവസത്തിന് മേൽ ഇടവേള)?",
+      "B": "ഡ്രോപ്പ്‌ഡൗൺ - 45 ദിവസത്തിന് താഴെ / 45 ദിവസത്തിന് മേൽ - പീരിയഡ് വീണ്ടും എത്ര ദിവസത്തിന് ശേഷം വരുന്നു?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "രക്തസ്രാവം എത്ര ദിവസം നീളുന്നു?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "വിഭാഗം D: ഡയറ്റ് തരം & വൈവിധ്യം"
+    },
+    "58": {
+      "A": "സാധാരണ ഡയറ്റ് തരം",
+      "B": "( ) ലാക്ടോ വെജ് (പാൽ/തൈര് കഴിക്കും)",
+      "C": "Must check one",
+      "E": "വീട്ടിൽ പാൽ കുടിക്കുമോ അല്ലെങ്കിൽ തൈര്/പനീർ കഴിക്കുമോ?"
+    },
+    "59": {
+      "B": "( ) ലാക്ടോ-ഓവോ വെജ് (മുട്ട കഴിക്കും)",
+      "E": "വീട്ടിൽ മുട്ട കഴിക്കുമോ?"
+    },
+    "60": {
+      "B": "( ) നോൺ-വെജ് (മീൻ/ചിക്കൻ/മാംസം)",
+      "E": "വീട്ടിൽ മീൻ, ചിക്കൻ അല്ലെങ്കിൽ മട്ടൺ കഴിക്കുമോ?"
+    },
+    "61": {
+      "A": "24 മണിക്കൂർ ഓർമ്മ (ഇന്നലെ): കുട്ടി ഇന്നലെ താഴെ പറയുന്നവ കഴിച്ചോ?",
+      "E": "നീ ഇന്നലെ എന്തെല്ലാം കഴിച്ചു?"
+    },
+    "62": {
+      "A": "ഭക്ഷണം:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "പ്രഭാത ഭക്ഷണം കഴിച്ചോ?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "നീ പ്രഭാതഭക്ഷണം കഴിച്ചോ?"
+    },
+    "65": {
+      "A": "സ്കൂളിൽ ഉച്ചഭക്ഷണം കഴിച്ചോ?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "നീ ഉച്ചഭക്ഷണം കഴിച്ചോ?"
+    },
+    "67": {
+      "A": "ഭക്ഷണ ഗ്രൂപ്പുകൾ:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "ഇലക്കറി (പാലക്/മേത്തി/അമരാന്ത്)",
+      "E": "നിന്റെ അവസാന ഭക്ഷണത്തിൽ ഇലക്കറികൾ (കീര) കഴിച്ചോ?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "മറ്റു പച്ചക്കറികൾ",
+      "E": "നിന്റെ അവസാന ഭക്ഷണത്തിൽ വേറേതെങ്കിലും പച്ചക്കറി കഴിച്ചോ?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "പഴങ്ങൾ",
+      "E": "നീ ഇന്നലെ പഴം കഴിച്ചോ?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "ദാൽ/പയർവർഗങ്ങൾ/ബീൻസ്",
+      "E": "നീ ഇന്നലെ ദാൽ/പയർവർഗങ്ങൾ/ബീൻസ് കഴിച്ചോ?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "പാൽ / തൈര്",
+      "B": " ",
+      "E": "നീ ഇന്നലെ പാൽ കുടിച്ചോ അല്ലെങ്കിൽ തൈര് കഴിച്ചോ?"
+    },
+    "77": {
+      "B": "ചെക്ക് ബോക്സ്: ഇല്ല",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "മുട്ട",
+      "B": "ചെക്ക് ബോക്സ്: അതെ",
+      "E": "നീ ഇന്നലെ മുട്ട കഴിച്ചോ?"
+    },
+    "79": {
+      "B": "ചെക്ക് ബോക്സ്: ഇല്ല",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "മീൻ / ചിക്കൻ / മാംസം",
+      "B": "ചെക്ക് ബോക്സ്: അതെ",
+      "E": "കഴിഞ്ഞ 3 ദിവസത്തിനുള്ളിൽ നീ മീൻ/ചിക്കൻ/മാംസം കഴിച്ചോ?"
+    },
+    "81": {
+      "B": "ചെക്ക് ബോക്സ്: ഇല്ല",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "കായ്കൾ / വേര്ക്കടല",
+      "B": "ചെക്ക് ബോക്സ്: അതെ",
+      "E": "നീ ഇന്നലെ കായ്കൾ/വേര്ക്കടല കഴിച്ചോ?"
+    },
+    "83": {
+      "B": "ചെക്ക് ബോക്സ്: ഇല്ല",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "നെഗറ്റീവ് ചെക്ക്:"
+    },
+    "87": {
+      "A": "പഞ്ചസാര പാനീയങ്ങൾ (SSB) അല്ലെങ്കിൽ പാക്കറ്റ് സ്നാക്സ് കഴിച്ചോ?",
+      "B": "ചെക്ക് ബോക്സ്: അതെ",
+      "C": "Red Flag",
+      "E": "നീ കൊക്കാകോള, പെപ്സി, മിറിൻഡ, ഫാന്റ, ലിംക തുടങ്ങിയ സോഫ്റ്റ് ഡ്രിങ്ക്സ് കുടിക്കുമോ? വീട്ടിൽ ഉണ്ടാക്കാത്ത ഫ്രൂട്ട് ജ്യൂസ് കുടിക്കുമോ? ബിസ്കറ്റ്, ചോക്ലേറ്റ്, ചിപ്സ്, കേക്ക് പോലുള്ള സ്നാക്സ് കഴിക്കുമോ?"
+    },
+    "88": {
+      "B": "ചെക്ക് ബോക്സ്: ഇല്ല",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "വിഭാഗം E: പ്രോഗ്രാം സഹായങ്ങൾ"
+    },
+    "90": {
+      "A": "പുഴുവിന് മരുന്ന് (Deworming)",
+      "B": "അതെ",
+      "E": "പുഴു മരുന്നിന്റെ വലിയ ഗുളിക എടുത്തോ?"
+    },
+    "91": {
+      "A": "കഴിഞ്ഞ 6-12 മാസത്തിനുള്ളിൽ എടുത്തിട്ടുണ്ടോ?",
+      "B": "ഇല്ല",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "അതെ എങ്കിൽ, ഏകദേശം തീയതി: [DD/MM/YYYY]",
+      "B": "അറിയില്ല",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "വിഭാഗം F: ഭക്ഷ്യ സുരക്ഷ"
+    },
+    "94": {
+      "A": "വിശപ്പ് സംബന്ധിച്ച ചോദ്യം (കഴിഞ്ഞ 12 മാസം)"
+    },
+    "95": {
+      "A": "\"വീട്ടിൽ ഞങ്ങൾക്ക് മതിയായ ഭക്ഷണം ലഭിക്കും.\"",
+      "B": "( ) പലപ്പോഴും ശരി",
+      "E": "വീട്ടിൽ നിനക്ക് വേണ്ടത്ര ഭക്ഷണം എല്ലായ്പ്പോഴും കിട്ടുന്നുണ്ടോ?"
+    },
+    "96": {
+      "B": "( ) ചിലപ്പോഴൊക്കെ ശരി (റെഡ് ഫ്ലാഗ്)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) ഒരിക്കലും ശരിയല്ല (റെഡ് ഫ്ലാഗ്)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Kannada": {
+    "1": {
+      "A": "ಶೀರ್ಷಿಕೆ: ವಿದ್ಯಾರ್ಥಿ ಬೆಳವಣಿಗೆ & ಪೌಷ್ಟಿಕ ರಿಸ್ಕ್ ಅಸೆಸ್ಮೆಂಟ್ ಸ್ಕ್ರೀನಿಂಗ್ ಫಾರ್ಮ್"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "ವಿಭಾಗ A: ವಿವರಗಳು"
+    },
+    "8": {
+      "A": "ದಿನಾಂಕ & ಸಮಯ",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "ಟೀಚರ್ ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "ಶಾಲೆ / ತರಗತಿ / ಸೆಕ್ಷನ್",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರು",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "ಯೂನಿಕ್ ಸ್ಟುಡೆಂಟ್ ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "ಜನ್ಮ ದಿನಾಂಕ (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "ಲಿಂಗ",
+      "B": "ಗಂಡು / ಹೆಣ್ಣು"
+    },
+    "15": {
+      "A": "ಪೋಷಕರ WhatsApp ನಂಬರ್",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "ವಿಭಾಗ B: ದೇಹದ ಅಳತೆಗಳು (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "ಪ್ರಶ್ನೆ",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. ತೂಕ (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. ಎತ್ತರ (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC ಟೇಪ್‌ನ ಬಣ್ಣ",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್ - ಟೇಪ್ ಬಣ್ಣ: ಕೆಂಪು",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್ - ಟೇಪ್ ಬಣ್ಣ: ಹಳದಿ",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್ - ಟೇಪ್ ಬಣ್ಣ: ಹಸಿರು"
+    },
+    "28": {
+      "A": "5. ವಯಸ್ಸು: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [ಆಟೋ-ಕ್ಯಾಲ್ಕ್] (5-18 ವರ್ಷ)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "ವಿಭಾಗ C: ತ್ವರಿತ ಆರೋಗ್ಯ ರೆಡ್ ಫ್ಲ್ಯಾಗ್ಸ್"
+    },
+    "34": {
+      "A": "ಟೀಚರ್ ಗಮನಿಸುವುದು (ಕಳೆದ 4 ವಾರಗಳು)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "ಸಾಮಾನ್ಯ ಆರೋಗ್ಯ ಚೆನ್ನಾಗಿಲ್ಲ",
+      "B": "ಮಗುಗೆ ಕೇಳಿ: ನೀನು ನಿನ್ನನ್ನು ಆರೋಗ್ಯವಾಗಿಯೇ ಅನಿಸುತ್ತಿದೆಯಾ?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "ವಿಳರ್ಚೆ (ಕಣ್ತುಪ್ಪು/ಕೈತಳದಲ್ಲಿ ಬಿಳಿಬಣ್ಣ)",
+      "B": "ಮಗುವಿಗೆ ಬಿಳಿಬಣ್ಣ/ವಿಳರ್ಚೆ (pallor) ಇದೆಯೇ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "ದಣಿವು, ತಲೆಸುತ್ತು, ಅಥವಾ ಮೂರ್ಚೆ",
+      "B": "ಸಾಮಾನ್ಯ ಕೆಲಸ/ಆಟ ಮಾಡುವಾಗ ಎಂದಾದರೂ ಮೂರ್ಚೆ ಬಂದಿತ್ತೇ, ಅಥವಾ ರೂಟಿನ್ ಕೆಲಸ/ಆಟ ಮಾಡಲು ತುಂಬಾ ದಣಿವಾಗುತ್ತದೆಯೇ ಎಂದು ಕೇಳಿ.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "ಪ್ರಯತ್ನದಲ್ಲಿ ಉಸಿರಾಟ ತೊಂದರೆ",
+      "B": "ಸಾಮಾನ್ಯ ಕೆಲಸ ಮಾಡುವಾಗ ಅಥವಾ ಸಾಮಾನ್ಯವಾಗಿ ನಡೆಯುವಾಗ ಉಸಿರಾಟ ಕಷ್ಟವಾಗುತ್ತದೆಯೇ ಎಂದು ಕೇಳಿ.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "ಮರುಮರು ಇನ್ಫೆಕ್ಷನ್ (ಕಳೆದ ತಿಂಗಳಲ್ಲಿ 3 ಬಾರಿ ಅಥವಾ ಹೆಚ್ಚು)",
+      "B": "ಮಗು ತುಂಬಾ ಸಲ ಅನಾರೋಗ್ಯವಾಗುತ್ತದೆಯೇ? ಕಳೆದ ತಿಂಗಳಲ್ಲಿ 3 ಬಾರಿ ಅಥವಾ ಹೆಚ್ಚು ಅಸ್ವಸ್ಥವಾಗಿತ್ತೇ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "ದೀರ್ಘಕಾಲದ ಕೆಮ್ಮು ಅಥವಾ ಅತಿಸಾರ",
+      "B": "ಮಗುಗೆ ಕೆಮ್ಮು ಇದೆಯೇ ಮತ್ತು ಅದು 4 ವಾರಗಳಿಗಿಂತ ಹೆಚ್ಚು ಮುಂದುವರಿದಿದೆಯೇ? ಅಥವಾ ಲೂಸ್ ಮೋಶನ್ 2 ವಾರಗಳಿಗಿಂತ ಹೆಚ್ಚು ಮುಂದುವರಿದಿದೆಯೇ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "ಮಲದಲ್ಲಿ ಹುಳು ಕಾಣುವುದು",
+      "B": "ಮಲದಲ್ಲಿ ಚಿಕ್ಕ ಹುಳುಗಳು ಕಂಡಿದ್ದೀಯಾ ಎಂದು ಕೇಳಿ.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "ಹಲ್ಲು ಕುಳು (ಕ್ಯಾವಿಟಿ), ಹಲ್ಲುಮಾಂಸದಿಂದ ರಕ್ತ, ಅಥವಾ ಬಾಯಿಯಲ್ಲಿ ಹುಣ್ಣು",
+      "B": "ಹಲ್ಲು ನೋವು, ಹಲ್ಲುಮಾಂಸ ರಕ್ತಸ್ರಾವ, ಅಥವಾ ಬಾಯಿಯಲ್ಲಿ ಹುಣ್ಣುಗಳಿವೆಯೇ ಎಂದು ಕೇಳಿ.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "ರಾತ್ರಿ ಕಾಣುವಲ್ಲಿ ತೊಂದರೆ (ಕಡಿಮೆ ಬೆಳಕಿನಲ್ಲಿ ಅಡ್ಡಬೀಳುವುದು)",
+      "B": "ಕತ್ತಲೆಯಲ್ಲಿ ಸರಿಯಾಗಿ ಕಾಣದೆ ನಡೆಯುವಾಗ ಅಡ್ಡಬೀಳುತ್ತೀಯಾ ಎಂದು ಕೇಳಿ.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "ಎಲುಬು ಅಥವಾ ಸಂಧಿ ನೋವು",
+      "B": "ಗಾಯವಾಗದೆ ಮತ್ತು ಹೆಚ್ಚಾಗಿ ಆಟ/ಕೆಲಸ ಮಾಡದೇ ಇದ್ದರೂ ಕೈ/ಕಾಲು/ಸಂಧಿಗಳಲ್ಲಿ ನೋವು ಇದೆಯೇ ಎಂದು ಕೇಳಿ.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "ಭೂಕು/ಆಹಾರ ಇಷ್ಟ",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "ಮಗುವಿಗೆ ಊಟ ಮಾಡಲು ಮನಸ್ಸಿಲ್ಲದೇ ಮತ್ತು ಹಸಿವು ಕೂಡ ಆಗದೆಯೇ?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "ಕಿಶೋರಿಯರು (ವಯಸ್ಸು ≥10 ಮಾತ್ರ)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "ಪೀರಿಯಡ್ಸ್ ಆರಂಭವಾಗಿದೆಯೇ?",
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್ - ಪೀರಿಯಡ್ಸ್ ಶುರುವಾಯಿತೇ ಎಂದು ಹುಡುಗಿಯನ್ನು ಕೇಳಿ."
+    },
+    "51": {
+      "A": "ಮೊದಲ ಪೀರಿಯಡ್ ಬಂದ ವಯಸ್ಸು (ವರ್ಷ)",
+      "B": "ವಯಸ್ಸು ಡ್ರಾಪ್‌ಡೌನ್ (ವರ್ಷ) - ಪೀರಿಯಡ್ಸ್ ಯಾವ ವಯಸ್ಸಿನಲ್ಲಿ ಶುರುವಾಯ್ತು ಎಂದು ಕೇಳಿ."
+    },
+    "52": {
+      "A": "ಜಾಸ್ತಿ ರಕ್ತಸ್ರಾವ (ದಿನಕ್ಕೆ ≥5 ಪ್ಯಾಡ್ ನೆನೆಯುವುದು ಅಥವಾ ಗಟ್ಟೆಗಳು ಬರಲು)?",
+      "B": "ಡ್ರಾಪ್‌ಡೌನ್ 1-10 - ಜಾಸ್ತಿ ಬ್ಲೀಡಿಂಗ್ ಇರುವ ದಿನಗಳಲ್ಲಿ ದಿನಕ್ಕೆ ಎಷ್ಟು ಪ್ಯಾಡ್ ಬೇಕಾಗುತ್ತದೆ ಎಂದು ಹುಡುಗಿಯನ್ನು ಕೇಳಿ.",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "ಡ್ರಾಪ್‌ಡೌನ್ ಹೌದು/ಇಲ್ಲ - ರಕ್ತಸ್ರಾವವಾಗುವಾಗ ಗಟ್ಟೆಗಳು (clots) ಬರುತ್ತವೆಯೇ?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "ಅನಿಯಮಿತ ಪೀರಿಯಡ್ಸ್ (>45 ದಿನಗಳ ಅಂತರ)?",
+      "B": "ಡ್ರಾಪ್‌ಡೌನ್ - 45 ದಿನಕ್ಕಿಂತ ಕಡಿಮೆ / 45 ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು - ಪೀರಿಯಡ್ಸ್ ಮತ್ತೆ ಎಷ್ಟು ದಿನಗಳ ನಂತರ ಬರುತ್ತದೆ?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "ರಕ್ತಸ್ರಾವ ಎಷ್ಟು ದಿನ ನಡೆಯುತ್ತದೆ?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "ವಿಭಾಗ D: ಆಹಾರ ಪ್ರಕಾರ & ವೈವಿಧ್ಯ"
+    },
+    "58": {
+      "A": "ಸಾಧಾರಣ ಆಹಾರ ಪ್ರಕಾರ",
+      "B": "( ) ಲ್ಯಾಕ್ಟೋ ವೆಜ್ (ಹಾಲು/ಮೊಸರು ತೆಗೆದುಕೊಳ್ಳುತ್ತಾರೆ)",
+      "C": "Must check one",
+      "E": "ಮನೆಯಲ್ಲಿ ಹಾಲು ಕುಡಿಯುತ್ತೀಯಾ ಅಥವಾ ಮೊಸರು/ಪನೀರ್ ತಿನ್ನುತ್ತೀಯಾ?"
+    },
+    "59": {
+      "B": "( ) ಲ್ಯಾಕ್ಟೋ-ಓವೋ ವೆಜ್ (ಮೊಟ್ಟೆ ತಿನ್ನುತ್ತಾರೆ)",
+      "E": "ಮನೆಯಲ್ಲಿ ಮೊಟ್ಟೆ ತಿನ್ನುತ್ತೀಯಾ?"
+    },
+    "60": {
+      "B": "( ) ನಾನ್-ವೆಜ್ (ಮೀನು/ಚಿಕನ್/ಮಾಂಸ)",
+      "E": "ಮನೆಯಲ್ಲಿ ಮೀನು, ಚಿಕನ್ ಅಥವಾ ಮಟನ್ ತಿನ್ನುತ್ತೀಯಾ?"
+    },
+    "61": {
+      "A": "24-ಗಂಟೆಗಳ ನೆನಪು (ನಿನ್ನೆ): ಮಗು ನಿನ್ನೆ ಕೆಳಗಿನವುಗಳನ್ನು ತಿಂದಿತೇ?",
+      "E": "ನೀ ನಿನ್ನೆ ಏನು ಏನು ತಿಂದೆ?"
+    },
+    "62": {
+      "A": "ಊಟಗಳು:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "ಬೆಳಗಿನ ತಿಂಡಿ ತಿಂದೆಯಾ?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "ನೀ ಬೆಳಗಿನ ತಿಂಡಿ ತಿಂದೆಯಾ?"
+    },
+    "65": {
+      "A": "ಶಾಲೆಯಲ್ಲಿ ಮಧ್ಯಾಹ್ನ ಊಟ ತಿಂದೆಯಾ?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "ನೀ ಮಧ್ಯಾಹ್ನ ಊಟ ತಿಂದೆಯಾ?"
+    },
+    "67": {
+      "A": "ಆಹಾರ ಗುಂಪುಗಳು:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "ಹಸಿರು ಎಲೆ ತರಕಾರಿ (ಪಾಲಕ್/ಮೆಂತ್ಯೆ/ಅಮರಾಂತ್)",
+      "E": "ನಿನ್ನ ಕೊನೆಯ ಊಟದಲ್ಲಿ ಸೊಪ್ಪು/ಹಸಿರು ಎಲೆ ತರಕಾರಿ ತಿಂದೆಯಾ?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "ಇತರೆ ತರಕಾರಿಗಳು",
+      "E": "ನಿನ್ನ ಕೊನೆಯ ಊಟದಲ್ಲಿ ಬೇರೆ ಯಾವುದಾದರೂ ತರಕಾರಿ ತಿಂದೆಯಾ?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "ಹಣ್ಣುಗಳು",
+      "E": "ನೀ ನಿನ್ನೆ ಹಣ್ಣು ತಿಂದೆಯಾ?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "ದಾಲ್ / ಬೇಳೆ / ಬೀನ್ಸ್",
+      "E": "ನೀ ನಿನ್ನೆ ದಾಲ್/ಬೇಳೆ/ಬೀನ್ಸ್ ತಿಂದೆಯಾ?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "ಹಾಲು / ಮೊಸರು",
+      "B": " ",
+      "E": "ನೀ ನಿನ್ನೆ ಹಾಲು ಕುಡಿದೆಯಾ ಅಥವಾ ಮೊಸರು ತಿಂದೆಯಾ?"
+    },
+    "77": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಇಲ್ಲ",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "ಮೊಟ್ಟೆ",
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಹೌದು",
+      "E": "ನೀ ನಿನ್ನೆ ಮೊಟ್ಟೆ ತಿಂದೆಯಾ?"
+    },
+    "79": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಇಲ್ಲ",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "ಮೀನು / ಚಿಕನ್ / ಮಾಂಸ",
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಹೌದು",
+      "E": "ಕಳೆದ 3 ದಿನಗಳಲ್ಲಿ ನೀ ಮೀನು/ಚಿಕನ್/ಮಾಂಸ ತಿಂದೆಯಾ?"
+    },
+    "81": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಇಲ್ಲ",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "ಕಾಯಿ / ಕಡಲೆಕಾಯಿ",
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಹೌದು",
+      "E": "ನೀ ನಿನ್ನೆ ಕಾಯಿ/ಕಡಲೆಕಾಯಿ ತಿಂದೆಯಾ?"
+    },
+    "83": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಇಲ್ಲ",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "ನೆಗಟಿವ್ ಚೆಕ್:"
+    },
+    "87": {
+      "A": "ಸಿಹಿ ಪಾನೀಯಗಳು (SSB) ಅಥವಾ ಪ್ಯಾಕೆಟ್ ಸ್ನ್ಯಾಕ್ಸ್ ತಿಂದೆಯಾ?",
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಹೌದು",
+      "C": "Red Flag",
+      "E": "ನೀ ಕೋಕಾಕೋಲಾ, ಪೆಪ್ಸಿ, ಮಿರಿಂಡಾ, ಫಾಂಟಾ, ಲಿಮ್ಕಾ ಹಾಗೆ ಸಾಫ್ಟ್ ಡ್ರಿಂಕ್ಸ್ ಕುಡಿಯುತ್ತೀಯಾ? ಮನೆಯಲ್ಲಿ ಮಾಡದ ಹಣ್ಣು ಜ್ಯೂಸ್ ಕುಡಿಯುತ್ತೀಯಾ? ಬಿಸ್ಕಟ್, ಚಾಕ್ಲೇಟ್, ಚಿಪ್ಸ್, ಕೇಕ್ ಹಾಗೆ ಸ್ನ್ಯಾಕ್ಸ್ ತಿನ್ನುತ್ತೀಯಾ?"
+    },
+    "88": {
+      "B": "ಚೆಕ್‌ಬಾಕ್ಸ್: ಇಲ್ಲ",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "ವಿಭಾಗ E: ಪ್ರೋಗ್ರಾಂ ಬೆಂಬಲ"
+    },
+    "90": {
+      "A": "ಹುಳು ಮಾತ್ರೆ (Deworming)",
+      "B": "ಹೌದು",
+      "E": "ಹುಳುಮಾತ್ರೆಯ ದೊಡ್ಡ ಗೊಳಿಗೆಯನ್ನು ತೆಗೆದುಕೊಂಡೆಯಾ?"
+    },
+    "91": {
+      "A": "ಕಳೆದ 6-12 ತಿಂಗಳಲ್ಲಿ ತೆಗೆದುಕೊಂಡಿದ್ದೀಯಾ?",
+      "B": "ಇಲ್ಲ",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "ಹೌದಾದರೆ, ಅಂದಾಜು ದಿನಾಂಕ: [DD/MM/YYYY]",
+      "B": "ಗೊತ್ತಿಲ್ಲ",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "ವಿಭಾಗ F: ಆಹಾರ ಭದ್ರತೆ"
+    },
+    "94": {
+      "A": "ಹಸಿವು ಪ್ರಶ್ನೆ (ಕಳೆದ 12 ತಿಂಗಳು)"
+    },
+    "95": {
+      "A": "\"ಮನೆಯಲ್ಲಿ ನಮಗೆ ಸಾಕಷ್ಟು ಆಹಾರ ಸಿಗುತ್ತದೆ.\"",
+      "B": "( ) ಹೆಚ್ಚಾಗಿ ಸರಿ",
+      "E": "ಮನೆಯಲ್ಲಿ ನಿನಗೆ ಬೇಕಾದಷ್ಟು ಊಟ ಯಾವಾಗಲೂ ಸಿಗುತ್ತದೆಯೇ?"
+    },
+    "96": {
+      "B": "( ) ಕೆಲವೊಮ್ಮೆ ಸರಿ (ರೆಡ್ ಫ್ಲ್ಯಾಗ್)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) ಎಂದಿಗೂ ಸರಿ ಇಲ್ಲ (ರೆಡ್ ಫ್ಲ್ಯಾಗ್)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Telugu": {
+    "1": {
+      "A": "శీర్షిక: విద్యార్థి వృద్ధి & పోషక ప్రమాద అంచనా స్క్రీనింగ్ ఫారం"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "సెక్షన్ A: వివరాలు"
+    },
+    "8": {
+      "A": "తేదీ & సమయం",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "టీచర్ ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "స్కూల్ / క్లాస్ / సెక్షన్",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "విద్యార్థి పేరు",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "యూనిక్ స్టూడెంట్ ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "పుట్టిన తేదీ (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "లింగం",
+      "B": "అబ్బాయి / అమ్మాయి"
+    },
+    "15": {
+      "A": "తల్లిదండ్రుల WhatsApp నంబర్",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "సెక్షన్ B: శరీర కొలతలు (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "ప్రశ్న",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. బరువు (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. ఎత్తు (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC టేప్ రంగు",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "చెక్‌బాక్స్ - టేప్ రంగు: ఎరుపు",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "చెక్‌బాక్స్ - టేప్ రంగు: పసుపు",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "చెక్‌బాక్స్ - టేప్ రంగు: ఆకుపచ్చ"
+    },
+    "28": {
+      "A": "5. వయసు: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [ఆటో-క్యాల్క్] (5-18 సంవత్సరాలు)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "సెక్షన్ C: త్వరిత హెల్త్ రెడ్ ఫ్లాగ్స్"
+    },
+    "34": {
+      "A": "టీచర్ గమనిక (గత 4 వారాలు)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "సాధారణ ఆరోగ్యం బాగోలేదు",
+      "B": "పిల్లను అడగండి: నీకు నువ్వు ఆరోగ్యంగా ఉన్నట్టు అనిపిస్తుందా?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "వెలిసిన రంగు (కంటి పాపల లోపల/అరిచేతిలో వెలిసిపోవడం)",
+      "B": "పిల్లాడికి వెలిసిన రంగు (pallor) ఉందా?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "అలసట, తల తిరగడం, లేదా మూర్ఛ",
+      "B": "సాధారణ పని/ఆడేటప్పుడు ఎప్పుడైనా మూర్ఛ వచ్చినదా, లేదా రోజువారీ పని/ఆడేందుకు చాలా అలసటగా అనిపిస్తుందా అని అడగండి.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "శ్రమలో శ్వాస ఆడకపోవడం",
+      "B": "సాధారణ పనులు చేసేటప్పుడు లేదా సాదారణంగా నడిచేటప్పుడు శ్వాస ఆడకపోతుందా అని అడగండి.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "తరచూ ఇన్‌ఫెక్షన్ (గత నెలలో 3 సార్లు లేదా ఎక్కువ)",
+      "B": "పిల్లాడు/పిల్ల చాలా సార్లు అనారోగ్యంగా పడుతుందా? గత నెలలో 3 సార్లు లేదా అంతకంటే ఎక్కువసారి అనారోగ్యంగా ఉన్నదా?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "దీర్ఘకాల దగ్గు లేదా దీర్ఘకాల విరేచనాలు",
+      "B": "పిల్లాడికి దగ్గు ఉంది, అది 4 వారాలు లేదా అంతకంటే ఎక్కువ కొనసాగుతోందా? లేదా లూజ్ మోషన్స్ 2 వారాలకంటే ఎక్కువగా ఉన్నాయా?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "మలంలో పురుగులు కనిపించడం",
+      "B": "నీ మలంలో చిన్న పురుగులు ఎప్పుడైనా చూసావా అని అడగండి.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "పళ్ల కుళ్లు/క్యావిటీ, దంత మాంసం నుంచి రక్తం, లేదా నోటిలో పుండ్లు",
+      "B": "పళ్ల నొప్పి, దంత మాంసం నుంచి రక్తం రావడం, లేదా నోటిలో పుండ్లు ఉన్నాయా అని అడగండి.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "రాత్రి చూపులో ఇబ్బంది (మందమైన వెలుతురులో తొట్రుపడటం)",
+      "B": "చీకటిలో సరిగ్గా కనిపించక నడిచేటప్పుడు తొట్రుపడుతావా అని అడగండి.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "ఎముక లేదా జాయింట్ నొప్పి",
+      "B": "గాయం లేకుండా, ఎక్కువగా ఆడకపోయినా/పని చేయకపోయినా చేతులు/కాళ్లు/జాయింట్స్‌లో నొప్పి ఉందా అని అడగండి.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "ఆకలి",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "పిల్లాడికి తినాలనిపించకుండా, ఆకలి అస్సలు లేకపోతుందా?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "కిశోరి అమ్మాయిలు (వయసు ≥10 మాత్రమే)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "పీరియడ్స్ మొదలయ్యాయా?",
+      "B": "చెక్‌బాక్స్ - పీరియడ్స్ మొదలయ్యాయా అని అమ్మాయిని అడగండి."
+    },
+    "51": {
+      "A": "మొదటి పీరియడ్ వచ్చిన వయసు (ఏళ్లు)",
+      "B": "వయసు డ్రాప్‌డౌన్ (ఏళ్లు) - పీరియడ్స్ ఏ వయసులో మొదలయ్యాయో అడగండి."
+    },
+    "52": {
+      "A": "ఎక్కువ బ్లీడింగ్ (రోజుకు ≥5 ప్యాడ్లు నానిపోవడం లేదా గడ్డలు రావడం)?",
+      "B": "డ్రాప్‌డౌన్ 1-10 - ఎక్కువ బ్లీడింగ్ ఉన్న రోజుల్లో రోజుకు ఎన్ని ప్యాడ్లు అవసరం అవుతాయో అమ్మాయిని అడగండి.",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "డ్రాప్‌డౌన్ అవును/కాదు - బ్లీడింగ్‌లో గడ్డలు (clots) వస్తాయా?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "అనియమిత పీరియడ్స్ (>45 రోజులు గ్యాప్)?",
+      "B": "డ్రాప్‌డౌన్ - 45 రోజులు కన్నా తక్కువ / 45 రోజులు కన్నా ఎక్కువ - పీరియడ్స్ మళ్లీ ఎన్ని రోజుల తర్వాత వస్తాయి?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "బ్లీడింగ్ ఎన్ని రోజులు ఉంటుంది?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "సెక్షన్ D: డైట్ రకం & వైవిధ్యం"
+    },
+    "58": {
+      "A": "సాధారణంగా డైట్ రకం",
+      "B": "( ) లాక్టో వెజ్ (పాలు/పెరుగు తీసుకుంటారు)",
+      "C": "Must check one",
+      "E": "ఇంట్లో పాలు తాగుతావా లేదా పెరుగు/పనీర్ తింటావా?"
+    },
+    "59": {
+      "B": "( ) లాక్టో-ఓవో వెజ్ (గుడ్డు తింటారు)",
+      "E": "ఇంట్లో గుడ్డు తింటావా?"
+    },
+    "60": {
+      "B": "( ) నాన్‌వెజ్ (చేప/చికెన్/మాంసం)",
+      "E": "ఇంట్లో చేప, చికెన్ లేదా మటన్ తింటావా?"
+    },
+    "61": {
+      "A": "24-గంటల రీకాల్ (నిన్న): పిల్లాడు/పిల్ల నిన్న కింది ఆహారాలను తిన్నాడా/తిన్నదా?",
+      "E": "నువ్వు నిన్న ఏమేమి తిన్నావు?"
+    },
+    "62": {
+      "A": "భోజనాలు:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "బ్రేక్‌ఫాస్ట్ తిన్నావా?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "నువ్వు బ్రేక్‌ఫాస్ట్ తిన్నావా?"
+    },
+    "65": {
+      "A": "స్కూల్లో లంచ్ తిన్నావా?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "నువ్వు లంచ్ తిన్నావా?"
+    },
+    "67": {
+      "A": "ఆహార గ్రూపులు:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "ఆకుకూరలు (పాలక్/మెంతి/అమరాంత్)",
+      "E": "నీ చివరి భోజనంలో ఆకుకూరలు తిన్నావా?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "ఇతర కూరగాయలు",
+      "E": "నీ చివరి భోజనంలో ఇంకే ఇతర కూరగాయలు తిన్నావా?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "పండ్లు",
+      "E": "నువ్వు నిన్న పండ్లు తిన్నావా?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "పప్పు / పప్పుదినుసులు / బీన్స్",
+      "E": "నువ్వు నిన్న పప్పు/పప్పుదినుసులు/బీన్స్ తిన్నావా?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "పాలు / పెరుగు",
+      "B": " ",
+      "E": "నువ్వు నిన్న పాలు తాగావా లేదా పెరుగు తిన్నావా?"
+    },
+    "77": {
+      "B": "చెక్‌బాక్స్: లేదు",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "గుడ్డు",
+      "B": "చెక్‌బాక్స్: అవును",
+      "E": "నువ్వు నిన్న గుడ్డు తిన్నావా?"
+    },
+    "79": {
+      "B": "చెక్‌బాక్స్: లేదు",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "చేప / చికెన్ / మాంసం",
+      "B": "చెక్‌బాక్స్: అవును",
+      "E": "గత 3 రోజుల్లో నువ్వు చేప/చికెన్/మాంసం తిన్నావా?"
+    },
+    "81": {
+      "B": "చెక్‌బాక్స్: లేదు",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "గింజలు / వేరుశెనగ",
+      "B": "చెక్‌బాక్స్: అవును",
+      "E": "నువ్వు నిన్న డ్రై ఫ్రూట్స్/వేరుశెనగ తిన్నావా?"
+    },
+    "83": {
+      "B": "చెక్‌బాక్స్: లేదు",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "నెగటివ్ చెక్:"
+    },
+    "87": {
+      "A": "చక్కెర పానీయాలు (SSB) లేదా ప్యాకెట్ స్నాక్స్ తిన్నావా?",
+      "B": "చెక్‌బాక్స్: అవును",
+      "C": "Red Flag",
+      "E": "నువ్వు కోకా కోలా, పెప్సీ, మిరిండా, ఫాంటా, లిమ్కా వంటి సాఫ్ట్ డ్రింక్స్ తాగుతావా? ఇంట్లో చేయని ఫ్రూట్ జ్యూస్ తాగుతావా? బిస్కెట్లు, చాక్లెట్లు, చిప్స్, కేక్ లాంటి స్నాక్స్ తింటావా?"
+    },
+    "88": {
+      "B": "చెక్‌బాక్స్: లేదు",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "సెక్షన్ E: ప్రోగ్రాం సపోర్ట్"
+    },
+    "90": {
+      "A": "పురుగు మందు (Deworming)",
+      "B": "అవును",
+      "E": "పురుగు మందు కోసం ఇచ్చిన పెద్ద మాత్ర తీసుకున్నావా?"
+    },
+    "91": {
+      "A": "గత 6-12 నెలల్లో తీసుకున్నావా?",
+      "B": "కాదు",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "అవును అయితే, సుమారు తేదీ: [DD/MM/YYYY]",
+      "B": "తెలీదు",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "సెక్షన్ F: ఆహార భద్రత"
+    },
+    "94": {
+      "A": "ఆకలి సంబంధిత ప్రశ్న (గత 12 నెలలు)"
+    },
+    "95": {
+      "A": "\"ఇంట్లో మాకు సరిపడా ఆహారం దొరుకుతుంది.\"",
+      "B": "( ) ఎక్కువసార్లు నిజం",
+      "E": "ఇంట్లో నీకు కావలసినంత ఆహారం ఎప్పుడూ దొరుకుతుందా?"
+    },
+    "96": {
+      "B": "( ) కొన్నిసార్లు నిజం (రెడ్ ఫ్లాగ్)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) ఎప్పుడూ నిజం కాదు (రెడ్ ఫ్లాగ్)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Marathi": {
+    "1": {
+      "A": "शीर्षक: विद्यार्थी वाढ आणि पोषण-धोका मूल्यांकन स्क्रीनिंग फॉर्म"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "सेक्शन A: तपशील"
+    },
+    "8": {
+      "A": "दिनांक आणि वेळ",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "टीचर ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "शाळा / वर्ग / सेक्शन",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "विद्यार्थ्याचे नाव",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "युनिक स्टुडंट ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "जन्मतारीख (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "लिंग",
+      "B": "मुलगा / मुलगी"
+    },
+    "15": {
+      "A": "पालकांचा WhatsApp नंबर",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "सेक्शन B: शरीर मोजमाप (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "प्रश्न",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. वजन (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. उंची (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC टेपचा रंग",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "चेकबॉक्स - टेपचा रंग: लाल",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "चेकबॉक्स - टेपचा रंग: पिवळा",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "चेकबॉक्स - टेपचा रंग: हिरवा"
+    },
+    "28": {
+      "A": "5. वय: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [ऑटो-कॅल्क] (5-18 वर्षे)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "सेक्शन C: झटपट आरोग्य रेड फ्लॅग्स"
+    },
+    "34": {
+      "A": "शिक्षक निरीक्षण (मागील 4 आठवडे)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "एकूण आरोग्य ठीक नाही",
+      "B": "विद्यार्थ्याला विचारा: तुम्हाला स्वतःला निरोगी वाटतं का?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "फिकटपणा (पापणी/तळहात आतून फिकट)",
+      "B": "मुलाला/मुलीला फिकटपणा (pallor) आहे का?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "थकवा, चक्कर येणे, किंवा बेशुद्ध पडणे",
+      "B": "नेहमीसारखं काम/खेळताना कधी बेशुद्ध पडलात का, किंवा रोजची कामं/खेळ करण्यासाठी खूपच थकवा येतो का, असे विचारा.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "मेहनत/चालण्यात दम लागणे",
+      "B": "साधारण काम करताना किंवा नेहमीसारखं चालताना दम लागतो का, असे विचारा.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "वारंवार इन्फेक्शन (मागच्या महिन्यात 3 वेळा किंवा जास्त)",
+      "B": "मुलाला/मुलीला वारंवार आजार होतो का? मागच्या महिन्यात 3 वेळा किंवा जास्त वेळा आजारी पडलात का?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "दीर्घकाळ खोकला किंवा जुलाब",
+      "B": "मुलाला/मुलीला खोकला आहे का आणि तो 4 आठवड्यांपेक्षा जास्त काळ आहे का? किंवा जुलाब/लूज मोशन होऊन ते 2 आठवड्यांपेक्षा जास्त चालू आहेत का?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "मलातून किडे दिसणे",
+      "B": "मलात कधी छोटे किडे दिसले आहेत का, असे विचारा.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "दात किडणे/कॅव्हिटी, हिरड्यांतून रक्त, किंवा तोंडात अल्सर",
+      "B": "दात दुखणे, हिरड्यांतून रक्त येणे, किंवा तोंडात फोड/अल्सर आहेत का, असे विचारा.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "रात्री दिसण्यात अडचण (कमी प्रकाशात ठेचकाळणे)",
+      "B": "अंधारात नीट दिसत नाही म्हणून चालताना ठेचकाळतो/ठेचकाळते का, असे विचारा.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "हाडं किंवा सांधे दुखणे",
+      "B": "इजा न होता आणि जास्त खेळ/काम न करता सुद्धा हात/पाय/सांध्यांमध्ये दुखतं का, असे विचारा.",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "भूक",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "मुलाला/मुलीला खायला वाटत नाही आणि भूक लागत नाही का?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "किशोरी मुली (वय ≥10 फक्त)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "पिरियड्स सुरू झाले आहेत का?",
+      "B": "चेकबॉक्स - पिरियड्स सुरू झाले आहेत का, असे मुलीला विचारा."
+    },
+    "51": {
+      "A": "पहिला पिरियड आला तेव्हा वय (वर्षे)",
+      "B": "वय ड्रॉपडाउन (वर्षे) - पिरियड्स कोणत्या वयात सुरू झाले? असे विचारा."
+    },
+    "52": {
+      "A": "खूप ब्लीडिंग (दिवसाला ≥5 पॅड पूर्ण भिजणे किंवा गुठळ्या येणे)?",
+      "B": "ड्रॉपडाउन 1-10 - जास्त ब्लीडिंगच्या दिवशी दिवसाला किती पॅड लागतात हे मुलीला विचारा.",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "ड्रॉपडाउन हो/नाही - ब्लीडिंगमध्ये गुठळ्या (clots) येतात का?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "अनियमित पिरियड्स (>45 दिवसांचा अंतर)?",
+      "B": "ड्रॉपडाउन - 45 दिवसांपेक्षा कमी / 45 दिवसांपेक्षा जास्त - पिरियड्स पुन्हा किती दिवसांनी येतात?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "ब्लीडिंग किती दिवस चालते?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "सेक्शन D: आहार प्रकार आणि विविधता"
+    },
+    "58": {
+      "A": "नेहमीचा आहार प्रकार",
+      "B": "( ) लॅक्टो व्हेज (दूध/दही घेतात)",
+      "C": "Must check one",
+      "E": "घरी दूध पिता का किंवा दही/पनीर खातात का?"
+    },
+    "59": {
+      "B": "( ) लॅक्टो-ओव्हो व्हेज (अंडं खातात)",
+      "E": "घरी अंडी खातात का?"
+    },
+    "60": {
+      "B": "( ) नॉन-व्हेज (मासे/चिकन/मांस)",
+      "E": "घरी मासे, चिकन किंवा मटण खातात का?"
+    },
+    "61": {
+      "A": "24 तासांची आठवण (काल): विद्यार्थ्याने/विद्यार्थिनीने काल खालील पदार्थ खाल्ले का?",
+      "E": "तुम्ही काल काय काय खाल्ले?"
+    },
+    "62": {
+      "A": "जेवण:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "नाश्ता केला का?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "तुम्ही नाश्ता केला का?"
+    },
+    "65": {
+      "A": "शाळेत जेवण/लंच खाल्लं का?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "तुम्ही दुपारचं जेवण/लंच केलं का?"
+    },
+    "67": {
+      "A": "अन्न गट:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "पालेभाज्या (पालक/मेथी/चवळी)",
+      "E": "तुमच्या शेवटच्या जेवणात पालेभाज्या खाल्ल्या का?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "इतर भाज्या",
+      "E": "तुमच्या शेवटच्या जेवणात इतर कोणतीही भाजी खाल्ली का?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "फळं",
+      "E": "तुम्ही काल फळं खाल्ली का?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "डाळ / कडधान्य / बीन्स",
+      "E": "तुम्ही काल डाळ/कडधान्य/बीन्स खाल्ले का?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "दूध / दही",
+      "B": " ",
+      "E": "तुम्ही काल दूध पिलात का किंवा दही खाल्लं का?"
+    },
+    "77": {
+      "B": "चेकबॉक्स: नाही",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "अंडं",
+      "B": "चेकबॉक्स: हो",
+      "E": "तुम्ही काल अंडं खाल्लं का?"
+    },
+    "79": {
+      "B": "चेकबॉक्स: नाही",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "मासे / चिकन / मांस",
+      "B": "चेकबॉक्स: हो",
+      "E": "गेल्या 3 दिवसांत तुम्ही मासे/चिकन/मांस खाल्ले का?"
+    },
+    "81": {
+      "B": "चेकबॉक्स: नाही",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "सुकामेवा / शेंगदाणे",
+      "B": "चेकबॉक्स: हो",
+      "E": "तुम्ही काल सुकेमेवे/शेंगदाणे खाल्ले का?"
+    },
+    "83": {
+      "B": "चेकबॉक्स: नाही",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "नेगेटिव्ह चेक:"
+    },
+    "87": {
+      "A": "गोड पेये (SSB) किंवा पॅकेट स्नॅक्स खाल्ले का?",
+      "B": "चेकबॉक्स: हो",
+      "C": "Red Flag",
+      "E": "तुम्ही कोका कोला, पेप्सी, मिरिंडा, फॅन्टा, लिम्का असे सॉफ्ट ड्रिंक्स पिता का? घरात न बनवलेला फळांचा ज्यूस पिता का? बिस्किट, चॉकलेट, चिप्स, केक असे स्नॅक्स खाता का?"
+    },
+    "88": {
+      "B": "चेकबॉक्स: नाही",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "सेक्शन E: कार्यक्रमासाठी मदत"
+    },
+    "90": {
+      "A": "कृमिनाशक (Deworming)",
+      "B": "हो",
+      "E": "कृमिनाशकाची मोठी गोळी घेतली होती का?"
+    },
+    "91": {
+      "A": "मागील 6-12 महिन्यांत घेतलं का?",
+      "B": "नाही",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "हो असेल तर, अंदाजे तारीख: [DD/MM/YYYY]",
+      "B": "माहित नाही",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "सेक्शन F: अन्नसुरक्षा"
+    },
+    "94": {
+      "A": "भुकेबद्दल प्रश्न (मागील 12 महिने)"
+    },
+    "95": {
+      "A": "\"घरी आम्हाला पुरेसं अन्न मिळतं.\"",
+      "B": "( ) बर्‍याचदा बरोबर",
+      "E": "घरी तुम्हाला हवे तितकं अन्न नेहमी मिळतं का?"
+    },
+    "96": {
+      "B": "( ) कधी कधी बरोबर (रेड फ्लॅग)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) कधीच बरोबर नाही (रेड फ्लॅग)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  },
+  "Bengali": {
+    "1": {
+      "A": "শিরোনাম: শিক্ষার্থীর বৃদ্ধি ও পুষ্টি-ঝুঁকি মূল্যায়ন স্ক্রিনিং ফর্ম"
+    },
+    "2": {
+      "A": "User: Class Teacher | Context: Bi-annual Screening",
+      "E": "Equipment used by schools for mesurement",
+      "F": "Sample product links for purchase"
+    },
+    "3": {
+      "A": "Measurement & Workflow Guidelines",
+      "E": "MUAC Tape (Mid Upper Arm Circumference)",
+      "F": "https://amzn.in/d/epJVnxp"
+    },
+    "4": {
+      "A": "Equipment: Digital scale (0.1 kg precision), Stadiometer (0.1 cm precision), MUAC tape.",
+      "E": "Height measurement tape (Wall mounted stadiometer)",
+      "F": "https://amzn.in/d/3niOMrS"
+    },
+    "5": {
+      "A": "Protocol: Measure without shoes/heavy jackets.",
+      "E": "Digital Weighing Scale (0.01 KG precision)",
+      "F": "https://amzn.in/d/9WLNEHX"
+    },
+    "6": {
+      "A": "Privacy: Ask sensitive questions (Section C - Girls) discreetly."
+    },
+    "7": {
+      "A": "সেকশন A: বিবরণ"
+    },
+    "8": {
+      "A": "তারিখ ও সময়",
+      "B": "Auto-captured",
+      "C": "System Timestamp"
+    },
+    "9": {
+      "A": "টিচার ID",
+      "B": "Teacher to enter name or school id"
+    },
+    "10": {
+      "A": "স্কুল / ক্লাস / সেকশন",
+      "B": "Dropdown Selection (Class and Section)"
+    },
+    "11": {
+      "A": "শিক্ষার্থীর নাম",
+      "B": "Text",
+      "C": "System will convert to encrypted system ID. No PII on system"
+    },
+    "12": {
+      "A": "ইউনিক স্টুডেন্ট ID",
+      "B": "Alphanumeric"
+    },
+    "13": {
+      "A": "জন্মতারিখ (DOB)",
+      "B": "Date Picker"
+    },
+    "14": {
+      "A": "লিঙ্গ",
+      "B": "ছেলে / মেয়ে"
+    },
+    "15": {
+      "A": "অভিভাবকের WhatsApp নম্বর",
+      "B": "Number",
+      "C": "System will not store. Used only for immediate onscreen report and generating a pre-filled WhatsApp message on the Class Teacher's WhatsApp"
+    },
+    "17": {
+      "A": "সেকশন B: শরীরের মাপ (Anthropometry)"
+    },
+    "18": {
+      "A": "Instructions: Enter raw data. The system will calculate scores."
+    },
+    "19": {
+      "A": "প্রশ্ন",
+      "B": "Data Entry Field or MCQs",
+      "C": "Flags"
+    },
+    "20": {
+      "A": "1. ওজন (kg)",
+      "B": "Data Entry Field"
+    },
+    "22": {
+      "A": "2. উচ্চতা (cm)",
+      "B": "Data Entry Field"
+    },
+    "24": {
+      "A": "3. MUAC টেপের রং",
+      "B": "Check Box MCQ (Check the one that applies)",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. "
+    },
+    "25": {
+      "B": "চেকবক্স - টেপের রং: লাল",
+      "C": "RED FLAG",
+      "D": "This field does not appear unless child is less than 5 years (60 months) old. Only one of three can be checked."
+    },
+    "26": {
+      "B": "চেকবক্স - টেপের রং: হলুদ",
+      "C": "YELLOW FLAG"
+    },
+    "27": {
+      "B": "চেকবক্স - টেপের রং: সবুজ"
+    },
+    "28": {
+      "A": "5. বয়স: ",
+      "B": "Auto-calc in Months and displayed"
+    },
+    "29": {
+      "A": "BMI: [অটো-ক্যাল্ক] (৫-১৮ বছর)",
+      "B": "Auto-calc using formula ",
+      "D": "This field will not appear and calculation is not done for children less than 5 years old (60 months)"
+    },
+    "30": {
+      "C": "SEVERE THINNESS AND OBESITY- RED FLAG",
+      "D": "severe thinness is BMI < −3 SD\n\nobesity > +2 SD"
+    },
+    "31": {
+      "C": "THINNESS AND OVER WEIGHT- YELLOW FLAG",
+      "D": "Thinness is BMI < −2 SD\n\noverweight > +1 SD"
+    },
+    "32": {
+      "C": "NORMAL- GREEN",
+      "D": "Normal        Minus two SD to plus one SD"
+    },
+    "33": {
+      "A": "সেকশন C: দ্রুত স্বাস্থ্য রেড ফ্ল্যাগ"
+    },
+    "34": {
+      "A": "শিক্ষকের পর্যবেক্ষণ (গত ৪ সপ্তাহ)",
+      "B": "Check Box MCQ (Check all that apply)"
+    },
+    "35": {
+      "A": "সাধারণ স্বাস্থ্য ভালো নয়",
+      "B": "শিশুকে জিজ্ঞেস করুন: তুমি কি নিজেকে সুস্থ মনে করো?",
+      "C": " (RED FLAG)",
+      "D": "If no then red flag"
+    },
+    "36": {
+      "A": "ফ্যাকাশে ভাব (চোখের পাতা/হাতের তালুর ভেতরে ফ্যাকাশে)",
+      "B": "শিশুর ফ্যাকাশে ভাব (pallor) আছে কি?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag. \nLink for teacher <what is pallor and how to check for it>"
+    },
+    "37": {
+      "A": "ক্লান্তি, মাথা ঘোরা, বা অজ্ঞান হওয়া",
+      "B": "স্বাভাবিক কাজ/খেলার সময় কখনো অজ্ঞান হয়েছ কি না, বা স্বাভাবিক কাজ/খেলা করতে খুব বেশি ক্লান্ত লাগে কি না জিজ্ঞেস করুন।",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "38": {
+      "A": "পরিশ্রমে শ্বাসকষ্ট",
+      "B": "সাধারণ কাজ করতে বা স্বাভাবিকভাবে হাঁটলে কি শ্বাসকষ্ট হয়—এটা জিজ্ঞেস করুন।",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "39": {
+      "A": "ঘন ঘন ইনফেকশন (গত মাসে ৩ বার বা বেশি)",
+      "B": "শিশুটি কি খুব ঘন ঘন অসুস্থ হয়? গত মাসে ৩ বার বা তার বেশি অসুস্থ হয়েছিল কি?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "40": {
+      "A": "দীর্ঘদিনের কাশি বা ডায়রিয়া",
+      "B": "শিশুর কি কাশি আছে এবং তা কি গত ৪ সপ্তাহ বা তার বেশি সময় ধরে আছে? অথবা পাতলা পায়খানা (লুজ মোশন) কি ২ সপ্তাহের বেশি চলছে?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "41": {
+      "A": "মলে কৃমি দেখা যাওয়া",
+      "B": "মলে কখনো ছোট কৃমি/পোকা দেখেছ কি না জিজ্ঞেস করুন।",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "42": {
+      "A": "দাঁতের ক্ষয়/ক্যাভিটি, মাড়ি থেকে রক্ত, বা মুখে ঘা",
+      "B": "দাঁত ব্যথা, মাড়ি থেকে রক্ত পড়া, বা মুখে ঘা আছে কি না জিজ্ঞেস করুন।",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag\n\n"
+    },
+    "43": {
+      "A": "রাতে দেখতে সমস্যা (কম আলোতে হোঁচট খাওয়া)",
+      "B": "অন্ধকারে ঠিকমতো না দেখায় হাঁটার সময় হোঁচট খাও কি না জিজ্ঞেস করুন।",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "44": {
+      "A": "হাড় বা জয়েন্টে ব্যথা",
+      "B": "চোট না লাগলেও আর বেশি খেলাধুলা/কাজ না করলেও হাত/পা/জয়েন্টে ব্যথা হয় কি না জিজ্ঞেস করুন।",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "45": {
+      "A": "খিদে",
+      "B": "Yes/No pull down"
+    },
+    "48": {
+      "B": "শিশুর কি খেতে ইচ্ছা করে না এবং কখনোই ক্ষুধা লাগে না?",
+      "C": " (RED FLAG)",
+      "D": "If yes then red flag"
+    },
+    "49": {
+      "A": "কিশোরী মেয়েরা (বয়স ≥10 শুধু)",
+      "D": "The 2nd to 5th fields do not appear unless child is menstruating and none of these appear unless the child is female "
+    },
+    "50": {
+      "A": "পিরিয়ড/মাসিক শুরু হয়েছে কি?",
+      "B": "চেকবক্স - মেয়েটির পিরিয়ড/মাসিক শুরু হয়েছে কি না জিজ্ঞেস করুন।"
+    },
+    "51": {
+      "A": "প্রথম পিরিয়ডের বয়স (বছর)",
+      "B": "বয়স ড্রপডাউন (বছর) - মাসিক/পিরিয়ড কত বয়সে শুরু হয়েছে? জিজ্ঞেস করুন।"
+    },
+    "52": {
+      "A": "অতিরিক্ত ব্লিডিং (দিনে ≥৫টি প্যাড ভিজে যাওয়া বা জমাট/ক্লটস পড়া)?",
+      "B": "ড্রপডাউন 1-10 - বেশি ব্লিডিংয়ের দিনে দিনে কতগুলো প্যাড লাগে, শিশুটিকে জিজ্ঞেস করুন।",
+      "C": " (RED FLAG if more than 4 pads)"
+    },
+    "53": {
+      "B": "ড্রপডাউন হ্যাঁ/না - ব্লিডিংয়ের সময় জমাট (clots) পড়ে কি?",
+      "C": " (RED FLAG if Yes)"
+    },
+    "54": {
+      "A": "অনিয়মিত পিরিয়ড (>৪৫ দিনের বেশি বিরতি)?",
+      "B": "ড্রপডাউন - ৪৫ দিনের কম / ৪৫ দিনের বেশি - পিরিয়ড আবার কত দিন পর হয়?",
+      "C": "(RED FLAG if > 45 days)"
+    },
+    "55": {
+      "A": "ব্লিডিং কত দিন থাকে?",
+      "B": "Number field ",
+      "C": "(RED FLAG if > 10 days)"
+    },
+    "57": {
+      "A": "সেকশন D: ডায়েটের ধরন ও বৈচিত্র্য"
+    },
+    "58": {
+      "A": "সাধারণত ডায়েটের ধরন",
+      "B": "( ) ল্যাক্টো ভেজ (দুধ/দই খায়)",
+      "C": "Must check one",
+      "E": "বাড়িতে দুধ খাও বা দই/পনির খাও কি?"
+    },
+    "59": {
+      "B": "( ) ল্যাক্টো-ওভো ভেজ (ডিম খায়)",
+      "E": "বাড়িতে ডিম খাও কি?"
+    },
+    "60": {
+      "B": "( ) নন-ভেজ (মাছ/চিকেন/মাংস)",
+      "E": "বাড়িতে মাছ, চিকেন বা মাটন খাও কি?"
+    },
+    "61": {
+      "A": "২৪ ঘণ্টার স্মরণ (গতকাল): শিক্ষার্থী কি গতকাল নিচের খাবারগুলো খেয়েছিল?",
+      "E": "তুমি গতকাল কী কী খেয়েছ?"
+    },
+    "62": {
+      "A": "খাবার:",
+      "B": "Yes-No pulldowns"
+    },
+    "63": {
+      "A": "নাশতা খেয়েছ?"
+    },
+    "64": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "তুমি কি নাশতা খেয়েছ?"
+    },
+    "65": {
+      "A": "স্কুলে দুপুরের খাবার/লাঞ্চ খেয়েছ?"
+    },
+    "66": {
+      "C": " (RED FLAG)",
+      "D": "If no then red flag",
+      "E": "তুমি কি দুপুরের খাবার/লাঞ্চ খেয়েছ?"
+    },
+    "67": {
+      "A": "খাবারের গ্রুপ:",
+      "B": "Yes-No pulldowns"
+    },
+    "68": {
+      "A": "পাতা শাক (পালং/মেথি/আমরান্থ)",
+      "E": "তোমার শেষ খাবারে শাকসবজি (পাতা শাক) খেয়েছ কি?"
+    },
+    "69": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "70": {
+      "A": "অন্যান্য সবজি",
+      "E": "তোমার শেষ খাবারে অন্য কোনো সবজি খেয়েছ কি?"
+    },
+    "71": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "72": {
+      "A": "ফল",
+      "E": "তুমি কি গতকাল ফল খেয়েছ?"
+    },
+    "73": {
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "74": {
+      "A": "ডাল / ডালজাতীয় / বিনস",
+      "E": "তুমি কি গতকাল ডাল/ডালজাতীয়/বিনস খেয়েছ?"
+    },
+    "75": {
+      "B": " ",
+      "C": "Red Flag ",
+      "D": "If no then red flag"
+    },
+    "76": {
+      "A": "দুধ / দই",
+      "B": " ",
+      "E": "তুমি কি গতকাল দুধ খেয়েছ বা দই খেয়েছ?"
+    },
+    "77": {
+      "B": "চেকবক্স: না",
+      "C": "This question appears only for lactovegetarian, lactoovovegetarian or non vegetarian. ",
+      "D": "If no then red flag "
+    },
+    "78": {
+      "A": "ডিম",
+      "B": "চেকবক্স: হ্যাঁ",
+      "E": "তুমি কি গতকাল ডিম খেয়েছ?"
+    },
+    "79": {
+      "B": "চেকবক্স: না",
+      "C": "This question appears only for lactoovovegetarian or non vegetarian. Not a red flag even if No for vegans and lactovegetarians. ",
+      "D": "If no then red flag"
+    },
+    "80": {
+      "A": "মাছ / চিকেন / মাংস",
+      "B": "চেকবক্স: হ্যাঁ",
+      "E": "গত ৩ দিনে তুমি কি মাছ/চিকেন/মাংস খেয়েছ?"
+    },
+    "81": {
+      "B": "চেকবক্স: না",
+      "C": "This question appears only for non vegetarian. Not a red flag even if No for vegans, lactovegetarians and lacto-ovo-vegetarians. ",
+      "D": "If no then red flag"
+    },
+    "82": {
+      "A": "বাদাম / চিনাবাদাম",
+      "B": "চেকবক্স: হ্যাঁ",
+      "E": "তুমি কি গতকাল বাদাম/চিনাবাদাম খেয়েছ?"
+    },
+    "83": {
+      "B": "চেকবক্স: না",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "86": {
+      "A": "নেগেটিভ চেক:"
+    },
+    "87": {
+      "A": "চিনি দেওয়া পানীয় (SSB) বা প্যাকেট স্ন্যাকস খেয়েছ?",
+      "B": "চেকবক্স: হ্যাঁ",
+      "C": "Red Flag",
+      "E": "তুমি কি কোকা কোলা, পেপসি, মিরিন্ডা, ফ্যান্টা, লিমকা ইত্যাদি সফট ড্রিংকস খাও? বাড়িতে বানানো নয় এমন ফলের জুস খাও? বিস্কুট, চকলেট, চিপস, কেক ইত্যাদি স্ন্যাকস খাও?"
+    },
+    "88": {
+      "B": "চেকবক্স: না",
+      "D": "If no then red flag"
+    },
+    "89": {
+      "A": "সেকশন E: প্রোগ্রাম সহায়তা"
+    },
+    "90": {
+      "A": "কৃমিনাশক (Deworming)",
+      "B": "হ্যাঁ",
+      "E": "কৃমিনাশকের বড় ট্যাবলেটটা নিয়েছ কি?"
+    },
+    "91": {
+      "A": "গত ৬-১২ মাসে নিয়েছিলে কি?",
+      "B": "না",
+      "C": "Red Flag",
+      "D": "If no then red flag"
+    },
+    "92": {
+      "A": "যদি হ্যাঁ, আনুমানিক তারিখ: [DD/MM/YYYY]",
+      "B": "জানি না",
+      "C": "Yellow Flag"
+    },
+    "93": {
+      "A": "সেকশন F: খাদ্য নিরাপত্তা"
+    },
+    "94": {
+      "A": "ক্ষুধা সম্পর্কিত প্রশ্ন (গত ১২ মাস)"
+    },
+    "95": {
+      "A": "\"বাড়িতে আমাদের যথেষ্ট খাবার থাকে।\"",
+      "B": "( ) বেশিরভাগ সময় সত্য",
+      "E": "বাড়িতে তুমি যে পরিমাণ খেতে চাও, ততটা খাবার কি সবসময় পাও?"
+    },
+    "96": {
+      "B": "( ) কখনো কখনো সত্য (রেড ফ্ল্যাগ)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    },
+    "97": {
+      "B": "( ) কখনোই সত্য নয় (রেড ফ্ল্যাগ)",
+      "C": "Red Flag",
+      "D": "Red Flag"
+    }
+  }
+}

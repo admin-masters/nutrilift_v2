@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+var/
+tmp/
+output/
+.env
+.DS_Store
+.playwright-cli/
+docs/source/
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-*

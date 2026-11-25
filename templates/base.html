@@ -1,0 +1,18 @@
+{% load static %}<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}NutriLift · School screening{% endblock %}</title><meta name="description" content="NutriLift school growth and nutrition screening programme"><link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml"><link rel="stylesheet" href="{% static 'app.css' %}"><script src="{% static 'app.js' %}" defer></script>{% block head %}{% endblock %}</head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+{% if user.is_authenticated %}
+<aside class="sidebar"><a class="brand" href="{% url 'dashboard' %}"><span class="brand-mark">n<span>↗</span></span><span>nutri<span class="brand-light">lift</span><small>SCHOOL HEALTH PROGRAMME</small></span></a>
+<p class="nav-label">WORKSPACE</p><nav aria-label="Main navigation">
+<a href="{% url 'dashboard' %}" {% if request.resolver_match.url_name == 'dashboard' %}class="active"{% endif %}><span class="nav-icon">▦</span>Overview</a>
+<a href="{% url 'dashboard' %}?metric=pending"><span class="nav-icon">♧</span>Parent follow-ups</a>
+<a href="{% url 'dashboard' %}?metric=due"><span class="nav-icon">◷</span>Re-screenings</a>
+{% if user.role == 'principal' %}<a href="{% url 'invite' %}"><span class="nav-icon">↗</span>Invite teachers</a><a href="{% url 'team' %}"><span class="nav-icon">♙</span>School team</a>{% endif %}
+<p class="nav-label">RESOURCES</p><a href="{% url 'guide' %}"><span class="nav-icon">▤</span>Screening guide</a><a href="{% url 'outbox' %}"><span class="nav-icon">✉</span>Local email outbox</a>
+{% if user.role == 'programme' %}<a href="{% url 'settings' %}"><span class="nav-icon">⚙</span>Programme settings</a>{% endif %}
+</nav><div class="sidebar-bottom"><div class="local-indicator"><span></span>Local workspace</div><p>Your data stays on this computer.</p><a class="user-profile" href="{% url 'password_change' %}"><span class="avatar">{{ user.first_name|first|default:'N' }}</span><span><strong>{{ user.first_name|default:user.email }}</strong><small>{{ user.get_role_display }}</small></span></a><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="signout" type="submit">Sign out ↗</button></form></div></aside>
+{% endif %}
+<div class="{% if user.is_authenticated %}app-shell{% else %}public-shell{% endif %}">
+{% if user.is_authenticated %}<header class="topbar"><div class="breadcrumb">NutriLift <span>/</span> {% if user.role == 'programme' %}Programme workspace{% else %}{{ user.school.name }}{% endif %}</div><div class="topbar-end"><span class="status-pill">Local preview</span><span class="today">{% now 'd M Y' %}</span></div></header>{% endif %}
+<main id="main">{% if messages %}<div class="flash-container">{% for message in messages %}<div class="flash {{ message.tags }}" role="status">{{ message }}</div>{% endfor %}</div>{% endif %}{% block content %}{% endblock %}</main>
+<footer class="footer">NutriLift School Screening Programme <span>Supporting healthier school days.</span></footer></div></body></html>
