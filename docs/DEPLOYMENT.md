@@ -77,7 +77,7 @@ First-time `prepare-data` additionally needs permission to run `/usr/bin/install
 4. Run `/var/www/venv/bin/python -m pip install -r requirements.txt`.
 5. Run Django checks and verify no migrations are missing from source control.
 6. Back up any existing SQLite database with SQLite's online backup API, which includes committed WAL data. Integrity-check the backup before proceeding. Backups are dated files in a `backups/` directory beside the database, with private permissions. Arrange retention/off-server copies according to your own operational policy.
-7. Run `manage.py migrate --noinput` and `manage.py collectstatic --noinput` with the existing virtualenv and production environment.
+7. Run `manage.py migrate --noinput` and `manage.py collectstatic --noinput` with the existing virtualenv and production environment. SQLite checks/migrations use a private file-creation mask. When the application and deployment share the same user, existing owned database/transaction files are restricted to `0600`; static assets remain readable by nginx.
 8. Restart **nutrilift.service**, then **nginx**, and confirm both are active.
 9. Request nginx's local `/health/` with the hostname from `NUTRILIFT_BASE_URL`, retry transient connection/HTTP errors, and verify JSON `status: ok`. This checks the nginx-to-Django route without depending on public DNS or TLS setup.
 
