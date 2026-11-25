@@ -7,6 +7,7 @@
 - Pushes and pull requests to either branch run Django checks, migration checks, tests, shell lint, and static collection.
 - Only a successful **Production push in the admin repository** deploys. A pull request or a Staging push cannot deploy.
 - To retry the current Production commit, open **Actions → Test and deploy NutriLift → Run workflow → Production** in the admin repository.
+- Select operation **inspect** for service user/group, environment-file paths, and database-file metadata without pulling, migrating, or restarting. Environment values and database records are not printed.
 - Deployments are serialized in GitHub and also locked on the server. A failed command stops the deployment and marks the run failed.
 
 Workflow: [ci-cd.yml](../.github/workflows/ci-cd.yml). Server script: [deploy_ec2.sh](../scripts/deploy_ec2.sh).
@@ -34,7 +35,7 @@ The workflow deploys to an already provisioned Ubuntu server. It does not create
 | Existing repository | `/var/www/nutrilift_v2` |
 | Checked-out branch | `Production` (case-sensitive) |
 | Repository `origin` | `https://github.com/admin-masters/nutrilift_v2.git` or equivalent SSH URL |
-| Existing Python virtualenv | `/var/www/venv` (Python 3.12 or newer; CI uses 3.13) |
+| Existing Python virtualenv | `/var/www/venv` (Python 3.12 or newer; CI tests 3.13 and the EC2 server's 3.14) |
 | Django systemd service | `nutrilift.service` |
 | Web server systemd service | `nginx` |
 | Environment file | `/var/www/secrets/nutrilift.env` |
@@ -67,7 +68,7 @@ ubuntu ALL=(root) NOPASSWD: /usr/sbin/nginx -t, /usr/bin/systemctl restart nutri
 
 ## Deployment sequence
 
-1. Validate branch, origin, clean checkout, environment, sudo permissions, and nginx configuration.
+1. Validate branch, origin, clean checkout, environment, writable data directory, sudo permissions, and nginx configuration. Missing data-directory prerequisites include service and file metadata in the failure log.
 2. Run **`git pull --ff-only origin Production`** in `/var/www/nutrilift_v2`. No reset, checkout, clone, file sync, or forced overwrite is used for deployment.
 3. Ensure the resulting commit is exactly the commit that passed this workflow's tests. If Production has advanced, stop and let the newer workflow deploy.
 4. Run `/var/www/venv/bin/python -m pip install -r requirements.txt`.

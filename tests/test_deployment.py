@@ -18,6 +18,7 @@ def deployment(tmp_path):
     app = tmp_path / 'app'
     app.mkdir()
     (app / '.git').mkdir()
+    (tmp_path / 'data').mkdir()
     (app / '.env').write_text(
         'DJANGO_DEBUG=0\n'
         'DJANGO_SECRET_KEY=test-deployment-key\n'
@@ -75,12 +76,11 @@ elif name == 'curl':
         'DEPLOY_TEST_LOG': str(log),
     }
     # Do not inherit deployment configuration from the developer's shell.
-    for name in ('NUTRILIFT_DEPLOY_HEALTH_URL',):
-        env.pop(name, None)
+    env.pop('NUTRILIFT_DEPLOY_HEALTH_URL', None)
 
-    def run(**overrides):
+    def run(operation='deploy', **overrides):
         result = subprocess.run(
-            ['bash', str(ROOT / 'scripts/deploy_ec2.sh'), SHA],
+            ['bash', str(ROOT / 'scripts/deploy_ec2.sh'), SHA, operation],
             env={**env, **overrides}, text=True, capture_output=True,
             timeout=20,
         )
@@ -90,9 +90,31 @@ elif name == 'curl':
     return run, app, tmp_path / 'data'
 
 
+def test_inspection_does_not_pull_migrate_or_restart(deployment):
+    run, _, data = deployment
+    data.rmdir()
+    result, calls = run(operation='inspect')
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert 'Inspection complete' in result.stdout
+    assert any(call[:3] == ['systemctl', 'show', 'nutrilift.service'] for call in calls)
+    assert not any(call[:2] == ['git', 'pull'] for call in calls)
+    assert not any(call[:2] == ['python', 'manage.py'] for call in calls)
+    assert not any(call[0] == 'sudo' for call in calls)
+    assert not data.exists()
+
+
+def test_missing_data_directory_reports_prerequisites_before_pull(deployment):
+    run, _, data = deployment
+    data.rmdir()
+    result, calls = run()
+    assert result.returncode != 0
+    assert 'Provision a writable production data directory' in result.stderr
+    assert not any(call[:2] == ['git', 'pull'] for call in calls)
+    assert not data.exists()
+
+
 def test_deployment_sequence_and_online_sqlite_backup(deployment):
     run, _, data = deployment
-    data.mkdir()
     # Keep WAL open: copying only the database file would lose this record.
     with sqlite3.connect(data / 'live.sqlite3') as live:
         live.execute('PRAGMA journal_mode=WAL')

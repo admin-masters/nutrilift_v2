@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [Production, Staging]
   workflow_dispatch:
+    inputs:
+      operation:
+        description: Deploy or inspect server prerequisites
+        type: choice
+        options: [deploy, inspect]
+        default: deploy
 
 permissions:
   contents: read
@@ -16,16 +22,19 @@ concurrency:
 
 jobs:
   test:
-    name: Django tests and deployment checks
+    name: Django tests and deployment checks (Python ${{ matrix.python }})
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy:
+      matrix:
+        python: ['3.13', '3.14']
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
-          python-version: '3.13'
+          python-version: ${{ matrix.python }}
           cache: pip
           cache-dependency-path: requirements*.txt
       - name: Install dependencies
@@ -61,12 +70,14 @@ jobs:
           EC2_IP: ${{ secrets.EC2_IP }}
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_KNOWN_HOSTS: ${{ secrets.EC2_KNOWN_HOSTS }}
+          DEPLOY_OPERATION: ${{ inputs.operation || 'deploy' }}
         run: |
           set -Eeuo pipefail
           [[ -n "$EC2_IP" ]] || { echo 'Missing repository secret EC2_IP'; exit 1; }
           [[ -n "$EC2_SSH_KEY" ]] || { echo 'Missing repository secret EC2_SSH_KEY'; exit 1; }
           [[ "$EC2_IP" =~ ^[a-zA-Z0-9][a-zA-Z0-9.:-]*$ ]] || { echo 'EC2_IP must be a hostname or IP address'; exit 1; }
           [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          [[ "$DEPLOY_OPERATION" == deploy || "$DEPLOY_OPERATION" == inspect ]] || exit 1
           umask 077
           ssh_dir=$(mktemp -d "$RUNNER_TEMP/nutrilift-ssh.XXXXXX")
           trap 'rm -rf "$ssh_dir"' EXIT
@@ -81,4 +92,4 @@ jobs:
             -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20 \
             -o ServerAliveInterval=30 -o ServerAliveCountMax=6 \
             -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_dir/known_hosts" \
-            "ubuntu@$EC2_IP" "bash -s -- $GITHUB_SHA" < scripts/deploy_ec2.sh
+            "ubuntu@$EC2_IP" "bash -s -- $GITHUB_SHA $DEPLOY_OPERATION" < scripts/deploy_ec2.sh
