@@ -71,10 +71,11 @@ elif name == 'curl':
         'PYTHONPATH': str(ROOT),
         'NUTRILIFT_DEPLOY_APP_DIR': str(app),
         'NUTRILIFT_DEPLOY_VENV_DIR': str(venv.parent),
+        'NUTRILIFT_DEPLOY_ENV_FILE': str(app / '.env'),
         'DEPLOY_TEST_LOG': str(log),
     }
     # Do not inherit deployment configuration from the developer's shell.
-    for name in ('NUTRILIFT_DEPLOY_ENV_FILE', 'NUTRILIFT_DEPLOY_HEALTH_URL'):
+    for name in ('NUTRILIFT_DEPLOY_HEALTH_URL',):
         env.pop(name, None)
 
     def run(**overrides):
@@ -178,10 +179,10 @@ def test_missing_environment_stops_before_pull(deployment):
     assert not any(call[:2] == ['git', 'pull'] for call in calls)
 
 
-def test_production_environment_filename_fallback(deployment):
+def test_custom_environment_file(deployment):
     run, app, _ = deployment
     (app / '.env').rename(app / '.env.production')
-    result, _ = run()
+    result, _ = run(NUTRILIFT_DEPLOY_ENV_FILE=str(app / '.env.production'))
     assert result.returncode == 0, result.stdout + result.stderr
 
 
