@@ -37,12 +37,12 @@ The workflow deploys to an already provisioned Ubuntu server. It does not create
 | Existing Python virtualenv | `/var/www/venv` (Python 3.12 or newer; CI uses 3.13) |
 | Django systemd service | `nutrilift.service` |
 | Web server systemd service | `nginx` |
-| Environment file | `/var/www/nutrilift_v2/.env`; `.env.production` is accepted if `.env` does not exist |
+| Environment file | `/var/www/secrets/nutrilift.env` |
 | Default public health endpoint | `https://nutrilift.inditech.co.in/health/` |
 
 The checkout must be clean, with no conflicting tracked or untracked files. Ignored environment files, SQLite files, and `var/` are allowed. The ubuntu account needs write access to the checkout, virtualenv, database directory, and collected static directory, plus read access to the environment file. Existing database ownership and service access must be preserved.
 
-The app service must load **the same environment file** used by deployment, for example `EnvironmentFile=/var/www/nutrilift_v2/.env` in its existing systemd unit. The deployment shell sources this trusted file with automatic export; use `KEY=value` assignments compatible with both Bash and systemd, with quoted values where necessary. It must include `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=0`, and the correct data/database paths. Do not create a fresh secret key on every deployment.
+The app service must load **the same environment file** used by deployment: `EnvironmentFile=/var/www/secrets/nutrilift.env` in its existing systemd unit. The deployment shell sources this trusted file with automatic export; use `KEY=value` assignments compatible with both Bash and systemd, with quoted values where necessary. It must include `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=0`, and the correct data/database paths. Do not create a fresh secret key on every deployment.
 
 The earlier production environment uses:
 

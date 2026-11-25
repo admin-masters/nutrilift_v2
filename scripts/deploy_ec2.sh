@@ -26,10 +26,7 @@ esac
 [[ -z "$(git status --porcelain)" ]] || fail 'The server checkout has local changes. Resolve them before deployment.'
 
 # Use the same environment file as nutrilift.service; never echo its contents.
-ENV_FILE="${NUTRILIFT_DEPLOY_ENV_FILE:-$APP_DIR/.env}"
-if [[ ! -f "$ENV_FILE" && -z "${NUTRILIFT_DEPLOY_ENV_FILE:-}" && -f "$APP_DIR/.env.production" ]]; then
-  ENV_FILE="$APP_DIR/.env.production"
-fi
+ENV_FILE="${NUTRILIFT_DEPLOY_ENV_FILE:-/var/www/secrets/nutrilift.env}"
 [[ -r "$ENV_FILE" ]] || fail "Missing readable server environment file: $ENV_FILE"
 set -a
 # shellcheck disable=SC1090
