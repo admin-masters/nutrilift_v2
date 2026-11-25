@@ -35,7 +35,7 @@ def deployment(tmp_path):
     # Use the real Python for inline backup/health validation, and substitute
     # external effects (Git, pip, management commands, services, and networking).
     executable = f'#!{sys.executable}\n' + r'''
-import json, os, pathlib, sys
+import grp, json, os, pathlib, pwd, sys
 name = pathlib.Path(sys.argv[0]).name
 args = sys.argv[1:]
 with open(os.environ['DEPLOY_TEST_LOG'], 'a') as log:
@@ -62,6 +62,13 @@ elif name == 'python':
 elif name == 'curl':
     output = pathlib.Path(args[args.index('--output') + 1])
     output.write_text(os.environ.get('DEPLOY_TEST_HEALTH', '{"status":"ok"}'))
+elif name == 'systemctl':
+    if '--property=User' in args and '--value' in args:
+        print(os.environ.get('DEPLOY_TEST_SERVICE_USER', pwd.getpwuid(os.getuid()).pw_name))
+    elif '--property=Group' in args and '--value' in args:
+        print(grp.getgrgid(os.getgid()).gr_name)
+elif name == 'sudo' and args[:2] == ['-n', '/usr/bin/install']:
+    pathlib.Path(args[-1]).mkdir(parents=True)
 '''
     for path in [venv / 'python', *(commands / name for name in ('git', 'sudo', 'flock', 'systemctl', 'curl'))]:
         path.write_text(executable)
@@ -113,6 +120,43 @@ def test_missing_data_directory_reports_prerequisites_before_pull(deployment):
     assert not data.exists()
 
 
+def test_explicit_first_time_setup_creates_data_directory_then_deploys(deployment):
+    run, _, data = deployment
+    data.rmdir()
+    result, calls = run(operation='prepare-data')
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert data.is_dir()
+    install = next(call for call in calls if call[:3] == ['sudo', '-n', '/usr/bin/install'])
+    assert calls.index(install) < calls.index(['git', 'pull', '--ff-only', 'origin', 'Production'])
+
+
+@pytest.mark.parametrize('suffix', ['', '-wal', '-journal'])
+def test_first_time_setup_never_discards_a_legacy_database(deployment, suffix):
+    run, app, data = deployment
+    data.rmdir()
+    (app / 'var').mkdir()
+    legacy = app / 'var' / f'nutrilift.sqlite3{suffix}'
+    if suffix:
+        legacy.write_bytes(b'existing transaction data')
+    else:
+        with sqlite3.connect(legacy) as database:
+            database.execute('CREATE TABLE preserved (id INTEGER)')
+    result, calls = run(operation='prepare-data')
+    assert result.returncode != 0
+    assert 'legacy database contains data' in result.stderr
+    assert not data.exists()
+    assert not any(call[:3] == ['sudo', '-n', '/usr/bin/install'] for call in calls)
+
+
+def test_first_time_setup_requires_matching_service_user(deployment):
+    run, _, data = deployment
+    data.rmdir()
+    result, _ = run(operation='prepare-data', DEPLOY_TEST_SERVICE_USER='different-service-user')
+    assert result.returncode != 0
+    assert 'same user' in result.stderr
+    assert not data.exists()
+
+
 def test_deployment_sequence_and_online_sqlite_backup(deployment):
     run, _, data = deployment
     # Keep WAL open: copying only the database file would lose this record.
@@ -146,7 +190,8 @@ def test_deployment_sequence_and_online_sqlite_backup(deployment):
     positions = [calls.index(command) for command in expected]
     assert positions == sorted(positions)
     curl = next(call for call in calls if call[0] == 'curl')
-    assert 'https://nutrilift.example/health/' in curl
+    assert 'http://127.0.0.1/health/' in curl
+    assert 'Host: nutrilift.example' in curl
     assert calls.index(curl) > positions[-1]
     assert 'Deployment successful' in result.stdout
 

@@ -8,6 +8,7 @@
 - Only a successful **Production push in the admin repository** deploys. A pull request or a Staging push cannot deploy.
 - To retry the current Production commit, open **Actions → Test and deploy NutriLift → Run workflow → Production** in the admin repository.
 - Select operation **inspect** for service user/group, environment-file paths, and database-file metadata without pulling, migrating, or restarting. Environment values and database records are not printed.
+- On an empty server only, operation **prepare-data** creates the missing configured data directory with the deployment user's ownership, then deploys. It refuses to proceed if a non-empty legacy database exists or the service uses a different user/group. Normal pushes never perform this first-time provisioning.
 - Deployments are serialized in GitHub and also locked on the server. A failed command stops the deployment and marks the run failed.
 
 Workflow: [ci-cd.yml](../.github/workflows/ci-cd.yml). Server script: [deploy_ec2.sh](../scripts/deploy_ec2.sh).
@@ -39,7 +40,7 @@ The workflow deploys to an already provisioned Ubuntu server. It does not create
 | Django systemd service | `nutrilift.service` |
 | Web server systemd service | `nginx` |
 | Environment file | `/var/www/secrets/nutrilift.env` |
-| Default public health endpoint | `https://nutrilift.inditech.co.in/health/` |
+| Default deployment health probe | `http://127.0.0.1/health/` through nginx, with Host `nutrilift.inditech.co.in` |
 
 The checkout must be clean, with no conflicting tracked or untracked files. Ignored environment files, SQLite files, and `var/` are allowed. The ubuntu account needs write access to the checkout, virtualenv, database directory, and collected static directory, plus read access to the environment file. Existing database ownership and service access must be preserved.
 
@@ -66,6 +67,8 @@ The server needs `git`, `curl`, `flock` (util-linux), nginx, and systemd. If ubu
 ubuntu ALL=(root) NOPASSWD: /usr/sbin/nginx -t, /usr/bin/systemctl restart nutrilift.service, /usr/bin/systemctl restart nginx
 ```
 
+First-time `prepare-data` additionally needs permission to run `/usr/bin/install -d` for the configured data directory; this is not required for subsequent normal deployments. Alternatively, an administrator can create `/var/lib/nutrilift/production` with owner/group `ubuntu:ubuntu` and mode `0755` before the first deployment. Existing data and ownership are never changed automatically.
+
 ## Deployment sequence
 
 1. Validate branch, origin, clean checkout, environment, writable data directory, sudo permissions, and nginx configuration. Missing data-directory prerequisites include service and file metadata in the failure log.
@@ -76,9 +79,9 @@ ubuntu ALL=(root) NOPASSWD: /usr/sbin/nginx -t, /usr/bin/systemctl restart nutri
 6. Back up any existing SQLite database with SQLite's online backup API, which includes committed WAL data. Integrity-check the backup before proceeding. Backups are dated files in a `backups/` directory beside the database, with private permissions. Arrange retention/off-server copies according to your own operational policy.
 7. Run `manage.py migrate --noinput` and `manage.py collectstatic --noinput` with the existing virtualenv and production environment.
 8. Restart **nutrilift.service**, then **nginx**, and confirm both are active.
-9. Request `${NUTRILIFT_BASE_URL}/health/` (default domain above), retry transient connection/HTTP errors, and verify JSON `status: ok`.
+9. Request nginx's local `/health/` with the hostname from `NUTRILIFT_BASE_URL`, retry transient connection/HTTP errors, and verify JSON `status: ok`. This checks the nginx-to-Django route without depending on public DNS or TLS setup.
 
-To use an internal health URL, add `NUTRILIFT_DEPLOY_HEALTH_URL=http://127.0.0.1:8000/health/` to the same server environment file, adjusting the port to the actual service. The default public URL also checks DNS, TLS, and nginx routing.
+To additionally check public DNS/TLS after HTTPS is configured, add `NUTRILIFT_DEPLOY_HEALTH_URL=https://nutrilift.inditech.co.in/health/` to the server environment file. The default probe uses the existing HTTP nginx listener; redirects are followed if nginx redirects it to HTTPS. This workflow does not provision TLS certificates.
 
 For exceptional layouts or script tests, the SSH environment can override `NUTRILIFT_DEPLOY_APP_DIR`, `NUTRILIFT_DEPLOY_VENV_DIR`, or `NUTRILIFT_DEPLOY_ENV_FILE`. GitHub uses the paths specified above without overrides.
 
