@@ -59,6 +59,8 @@ elif name == 'python':
         sys.exit('The production environment was not loaded')
     if args[0] == '-':
         os.execv(sys.executable, [sys.executable, *args])
+    if args[:2] in (['manage.py', 'makemigrations'], ['manage.py', 'migrate']):
+        pathlib.Path(os.environ['NUTRILIFT_DB']).touch(exist_ok=True)
 elif name == 'curl':
     output = pathlib.Path(args[args.index('--output') + 1])
     output.write_text(os.environ.get('DEPLOY_TEST_HEALTH', '{"status":"ok"}'))
@@ -126,6 +128,7 @@ def test_explicit_first_time_setup_creates_data_directory_then_deploys(deploymen
     result, calls = run(operation='prepare-data')
     assert result.returncode == 0, result.stdout + result.stderr
     assert data.is_dir()
+    assert (data / 'live.sqlite3').stat().st_mode & 0o777 == 0o600
     install = next(call for call in calls if call[:3] == ['sudo', '-n', '/usr/bin/install'])
     assert calls.index(install) < calls.index(['git', 'pull', '--ff-only', 'origin', 'Production'])
 
@@ -173,6 +176,7 @@ def test_deployment_sequence_and_online_sqlite_backup(deployment):
             assert backup.execute('SELECT value FROM records').fetchall() == [('preserved',)]
         assert backups[0].stat().st_mode & 0o777 == 0o600
         assert live.execute('SELECT value FROM records').fetchall() == [('preserved',)]
+        assert (data / 'live.sqlite3').stat().st_mode & 0o777 == 0o600
 
     expected = [
         ['git', 'pull', '--ff-only', 'origin', 'Production'],

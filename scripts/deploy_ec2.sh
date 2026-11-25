@@ -105,6 +105,8 @@ git pull --ff-only origin Production
 [[ "$(git rev-parse HEAD)" == "$EXPECTED_SHA" ]] || fail 'Production advanced or the server diverged from the tested commit. Run CI again for the current Production commit.'
 
 "$PYTHON" -m pip install -r requirements.txt
+# Migration checks can open/create SQLite before migrate itself runs.
+umask 077
 "$PYTHON" manage.py check
 "$PYTHON" manage.py makemigrations --check --dry-run
 
@@ -136,8 +138,17 @@ else:
     print('No existing database; migrations will create it.')
 PY
 
-# Newly created databases are private; collected static assets remain public.
-(umask 077; "$PYTHON" manage.py migrate --noinput)
+"$PYTHON" manage.py migrate --noinput
+# For the shared service/deployment account, also tighten an existing DB and
+# its transaction files. Preserve permissions for other ownership models.
+if [[ -n "${NUTRILIFT_DB:-}" && "$(systemctl show nutrilift.service --property=User --value)" == "$(id -un)" ]]; then
+  for database_file in "$NUTRILIFT_DB"{,-wal,-shm,-journal}; do
+    if [[ -f "$database_file" && -O "$database_file" ]]; then
+      chmod 600 "$database_file"
+    fi
+  done
+fi
+umask 022
 "$PYTHON" manage.py collectstatic --noinput
 
 sudo -n /usr/bin/systemctl restart nutrilift.service
