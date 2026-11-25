@@ -8,4 +8,4 @@ The user requested this repository and account arrangement on 25 November 2026:
 - Keep future work on `Staging` and push it to `origin`. Promote to `upstream/Production` only when the user requests promotion, normally through a pull request.
 - Preserve local SQLite data and runtime files. Do not commit `var/`, `.env` files, credentials, screenshots, or raw source documents in `docs/source/`.
 - Verify meaningful code changes with `.venv/bin/pytest -q` and `.venv/bin/python manage.py check`.
-- GitHub repository setup does not authorise deploying to AWS or activating a deployment pipeline; that remains a separate phase.
+- On 25 November 2026 the user authorised automated EC2 deployment from `admin-masters/nutrilift_v2` / `Production` using SSH user `ubuntu`, secrets `EC2_IP` and `EC2_SSH_KEY`, application path `/var/www/nutrilift_v2`, and virtualenv `/var/www/venv`. Update the server source using `git pull` only; after checks, migrations, and static collection, restart `nutrilift.service` and `nginx`. Keep Staging CI-only.
