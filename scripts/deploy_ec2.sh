@@ -10,7 +10,9 @@ readonly APP_DIR="${NUTRILIFT_DEPLOY_APP_DIR:-/var/www/nutrilift_v2}"
 readonly VENV_DIR="${NUTRILIFT_DEPLOY_VENV_DIR:-/var/www/venv}"
 readonly PYTHON="$VENV_DIR/bin/python"
 readonly EXPECTED_SHA="${1:-}"
+readonly OPERATION="${2:-deploy}"
 [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]] || fail 'Pass the full commit SHA that passed CI.'
+[[ "$OPERATION" == deploy || "$OPERATION" == inspect ]] || fail 'Operation must be deploy or inspect.'
 [[ -d "$APP_DIR/.git" ]] || fail "An existing Git checkout is required at $APP_DIR."
 [[ -x "$PYTHON" ]] || fail "Python virtualenv is missing at $VENV_DIR."
 cd "$APP_DIR"
@@ -35,6 +37,46 @@ set +a
 export DJANGO_SETTINGS_MODULE="${DJANGO_SETTINGS_MODULE:-nutrilift.settings}"
 [[ "${DJANGO_DEBUG:-0}" == 0 ]] || fail 'Production requires DJANGO_DEBUG=0.'
 [[ -n "${DJANGO_SECRET_KEY:-}" ]] || fail 'Set DJANGO_SECRET_KEY in the server environment file.'
+
+inspect_server() {
+  # Deliberately exclude Environment and ExecStart, which can contain secrets.
+  systemctl show nutrilift.service --property=User --property=Group \
+    --property=WorkingDirectory --property=EnvironmentFiles \
+    --property=ActiveState --property=SubState
+  systemctl show nginx --property=ActiveState --property=SubState
+  "$PYTHON" - "$APP_DIR" <<'PY'
+import grp
+import os
+from pathlib import Path
+import pwd
+import sys
+
+app = Path(sys.argv[1])
+paths = [app / 'var' / 'nutrilift.sqlite3']
+for name in ('NUTRILIFT_DATA_DIR', 'NUTRILIFT_DB'):
+    if os.environ.get(name):
+        paths.append(Path(os.environ[name]))
+for path in dict.fromkeys(paths):
+    if path.exists():
+        info = path.stat()
+        print(f'{path}: owner={pwd.getpwuid(info.st_uid).pw_name} '
+              f'group={grp.getgrgid(info.st_gid).gr_name} '
+              f'mode={info.st_mode & 0o777:o} bytes={info.st_size}')
+    else:
+        print(f'{path}: missing')
+PY
+}
+
+if [[ "$OPERATION" == inspect ]]; then
+  inspect_server
+  printf 'Inspection complete; no pull, migrations, or restarts performed.\n'
+  exit 0
+fi
+
+if [[ -n "${NUTRILIFT_DATA_DIR:-}" && ! -w "$NUTRILIFT_DATA_DIR" ]]; then
+  inspect_server
+  fail "Provision a writable production data directory before deployment: $NUTRILIFT_DATA_DIR"
+fi
 
 # Validate required privileged commands before modifying code or the database.
 sudo -n -l /usr/sbin/nginx -t >/dev/null
