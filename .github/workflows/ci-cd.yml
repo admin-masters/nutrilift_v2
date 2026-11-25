@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     inputs:
       operation:
-        description: Deploy or inspect server prerequisites
+        description: Deploy, inspect, or prepare an empty server's data directory
         type: choice
-        options: [deploy, inspect]
+        options: [deploy, inspect, prepare-data]
         default: deploy
 
 permissions:
@@ -77,7 +77,7 @@ jobs:
           [[ -n "$EC2_SSH_KEY" ]] || { echo 'Missing repository secret EC2_SSH_KEY'; exit 1; }
           [[ "$EC2_IP" =~ ^[a-zA-Z0-9][a-zA-Z0-9.:-]*$ ]] || { echo 'EC2_IP must be a hostname or IP address'; exit 1; }
           [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
-          [[ "$DEPLOY_OPERATION" == deploy || "$DEPLOY_OPERATION" == inspect ]] || exit 1
+          [[ "$DEPLOY_OPERATION" == deploy || "$DEPLOY_OPERATION" == inspect || "$DEPLOY_OPERATION" == prepare-data ]] || exit 1
           umask 077
           ssh_dir=$(mktemp -d "$RUNNER_TEMP/nutrilift-ssh.XXXXXX")
           trap 'rm -rf "$ssh_dir"' EXIT

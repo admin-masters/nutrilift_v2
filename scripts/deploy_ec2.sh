@@ -12,7 +12,7 @@ readonly PYTHON="$VENV_DIR/bin/python"
 readonly EXPECTED_SHA="${1:-}"
 readonly OPERATION="${2:-deploy}"
 [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]] || fail 'Pass the full commit SHA that passed CI.'
-[[ "$OPERATION" == deploy || "$OPERATION" == inspect ]] || fail 'Operation must be deploy or inspect.'
+[[ "$OPERATION" == deploy || "$OPERATION" == inspect || "$OPERATION" == prepare-data ]] || fail 'Operation must be deploy, inspect, or prepare-data.'
 [[ -d "$APP_DIR/.git" ]] || fail "An existing Git checkout is required at $APP_DIR."
 [[ -x "$PYTHON" ]] || fail "Python virtualenv is missing at $VENV_DIR."
 cd "$APP_DIR"
@@ -73,6 +73,22 @@ if [[ "$OPERATION" == inspect ]]; then
   exit 0
 fi
 
+if [[ "$OPERATION" == prepare-data && ! -e "${NUTRILIFT_DATA_DIR:-}" ]]; then
+  # Explicit, one-time setup only. Never relocate or replace an existing DB.
+  [[ "${NUTRILIFT_DATA_DIR:-}" == /* && ! -L "$NUTRILIFT_DATA_DIR" ]] || fail 'An absolute production data-directory path is required.'
+  for legacy_file in "$APP_DIR/var/nutrilift.sqlite3"{,-wal,-journal}; do
+    [[ ! -s "$legacy_file" ]] || fail 'The legacy database contains data. Plan its migration before preparing a new data directory.'
+  done
+  [[ -n "${NUTRILIFT_DB:-}" && ! -e "$NUTRILIFT_DB" ]] || fail 'The configured database must be absent for first-time setup.'
+  deploy_user=$(id -un)
+  deploy_group=$(id -gn)
+  [[ "$(systemctl show nutrilift.service --property=User --value)" == "$deploy_user" ]] || fail 'First-time setup requires the service and deployment to use the same user.'
+  service_group=$(systemctl show nutrilift.service --property=Group --value)
+  [[ -z "$service_group" || "$service_group" == "$deploy_group" ]] || fail 'The service group differs from the deployment group; provision permissions explicitly.'
+  sudo -n /usr/bin/install -d -o "$deploy_user" -g "$deploy_group" -m 0755 "$NUTRILIFT_DATA_DIR"
+  printf 'Prepared production data directory: %s\n' "$NUTRILIFT_DATA_DIR"
+fi
+
 if [[ -n "${NUTRILIFT_DATA_DIR:-}" && ! -w "$NUTRILIFT_DATA_DIR" ]]; then
   inspect_server
   fail "Provision a writable production data directory before deployment: $NUTRILIFT_DATA_DIR"
@@ -120,7 +136,8 @@ else:
     print('No existing database; migrations will create it.')
 PY
 
-"$PYTHON" manage.py migrate --noinput
+# Newly created databases are private; collected static assets remain public.
+(umask 077; "$PYTHON" manage.py migrate --noinput)
 "$PYTHON" manage.py collectstatic --noinput
 
 sudo -n /usr/bin/systemctl restart nutrilift.service
@@ -128,12 +145,23 @@ sudo -n /usr/bin/systemctl restart nginx
 systemctl is-active --quiet nutrilift.service
 systemctl is-active --quiet nginx
 
-HEALTH_URL="${NUTRILIFT_DEPLOY_HEALTH_URL:-${NUTRILIFT_BASE_URL:-https://nutrilift.inditech.co.in}/health/}"
+# Probe nginx locally, using the application's Host header for virtual hosting.
+# An explicit URL can additionally check public DNS/TLS when configured.
+HEALTH_URL="${NUTRILIFT_DEPLOY_HEALTH_URL:-http://127.0.0.1/health/}"
+health_host=$("$PYTHON" - <<'PY'
+import os
+from urllib.parse import urlsplit
+host = urlsplit(os.environ.get('NUTRILIFT_BASE_URL', 'https://nutrilift.inditech.co.in')).hostname
+if not host:
+    raise SystemExit('NUTRILIFT_BASE_URL must include a valid hostname.')
+print(host)
+PY
+)
 health_file=$(mktemp)
 trap 'rm -f "$health_file"' EXIT
 curl --fail --silent --show-error --location \
   --connect-timeout 10 --max-time 30 --retry 5 --retry-delay 5 --retry-connrefused \
-  "$HEALTH_URL" --output "$health_file"
+  --header "Host: $health_host" "$HEALTH_URL" --output "$health_file"
 "$PYTHON" - "$health_file" <<'PY'
 import json
 import sys
