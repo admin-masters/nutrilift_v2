@@ -1,6 +1,6 @@
 # NutriLift — local school screening application
 
-Python/Django with a local SQLite database. Runs entirely on this computer; external WhatsApp and configured education links open only when selected. AWS deployment is a separate phase.
+Python/Django with a SQLite database. Run locally using the instructions below, or deploy the Production branch to the existing EC2 server through GitHub Actions.
 
 ## Repository workflow
 
@@ -83,6 +83,8 @@ The command prompts for a password without placing it in shell history.
 
 See [implementation decisions](docs/IMPLEMENTATION.md), [reference provenance](core/data/SOURCES.md) and [test results](docs/TESTING.md).
 
-## Later deployment phase
+## Automated EC2 deployment
 
-CI/CD and AWS EC2 deployment remain the next phase after local acceptance. The project includes migrations and pinned dependencies to support that transition. The current Django development server and local email backend are intentionally for local testing; the Production branch name does not deploy the application.
+GitHub Actions tests pushes and pull requests for **Staging** and **Production**. Successful pushes to **admin-masters/nutrilift_v2 → Production** deploy automatically using the repository secrets **EC2_IP** and **EC2_SSH_KEY**, with SSH user **ubuntu**. Staging only runs CI.
+
+Deployment runs `git pull --ff-only origin Production` in `/var/www/nutrilift_v2`, installs requirements through `/var/www/venv`, backs up SQLite, migrates, collects static files, and restarts `nutrilift.service` and `nginx`. It verifies both services and the application health endpoint. See [EC2 deployment setup and troubleshooting](docs/DEPLOYMENT.md) for server prerequisites and manual retries.
