@@ -12,7 +12,10 @@ readonly PYTHON="$VENV_DIR/bin/python"
 readonly EXPECTED_SHA="${1:-}"
 readonly OPERATION="${2:-deploy}"
 [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]] || fail 'Pass the full commit SHA that passed CI.'
-[[ "$OPERATION" == deploy || "$OPERATION" == inspect || "$OPERATION" == prepare-data ]] || fail 'Operation must be deploy, inspect, or prepare-data.'
+case "$OPERATION" in deploy|inspect|prepare-data|demo-accounts) ;; *) fail 'Unknown deployment operation.' ;; esac
+if [[ "$OPERATION" == demo-accounts && -z "${NUTRILIFT_DEMO_PASSWORD:-}" ]]; then
+  fail 'A demo password is required for the explicit demo-accounts operation.'
+fi
 [[ -d "$APP_DIR/.git" ]] || fail "An existing Git checkout is required at $APP_DIR."
 [[ -x "$PYTHON" ]] || fail "Python virtualenv is missing at $VENV_DIR."
 cd "$APP_DIR"
@@ -139,6 +142,10 @@ else:
 PY
 
 "$PYTHON" manage.py migrate --noinput
+if [[ "$OPERATION" == demo-accounts ]]; then
+  printf '%s\n' "$NUTRILIFT_DEMO_PASSWORD" | "$PYTHON" manage.py provision_demo_accounts --password-stdin --reset-passwords
+  unset NUTRILIFT_DEMO_PASSWORD
+fi
 # For the shared service/deployment account, also tighten an existing DB and
 # its transaction files. Preserve permissions for other ownership models.
 if [[ -n "${NUTRILIFT_DB:-}" && "$(systemctl show nutrilift.service --property=User --value)" == "$(id -un)" ]]; then

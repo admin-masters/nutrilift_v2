@@ -92,3 +92,26 @@ Check the failed GitHub Actions step first, then inspect `journalctl -u nutrilif
 Deployments update an existing checkout in place. They are not atomic: files or dependencies may already have changed when a later step fails, and a failed health check does not undo migrations. There is no automatic rollback or database restore. Correct the problem and run the workflow for current Production, or publish an intentional Git revert through the normal development process. Restore a database backup only as an explicit maintenance operation after assessing writes since the backup.
 
 This pipeline preserves the application's current features and configuration, including its local email outbox. It does not configure SMTP or add separate reminder-worker services.
+
+## One-time demo-account provisioning
+
+The `provision_demo_accounts` management command creates or repairs these application sign-ins: `teacher@nutrilift.local`, `principal@nutrilift.local`, and `admin@nutrilift.local` (SAPA/GOM role). Teacher and principal share a clearly labelled demo school; the teacher receives Class 6, Sections A and B. It preserves other users, programme settings, and screening records, and refuses conflicting identities or links to non-demo schools. It does not replace the database or create fictional screenings.
+
+For one-time execution through GitHub Actions:
+
+1. Set the temporary repository secret `NUTRILIFT_DEMO_PASSWORD` to the desired shared demo password.
+2. Run **Test and deploy NutriLift**, branch **Production**, operation **demo-accounts**.
+3. The tested deployment backs up the database, applies migrations, then runs `provision_demo_accounts --password-stdin --reset-passwords`. The password travels over encrypted SSH stdin and is never included in process arguments or output. Only these demo accounts' local-proxy login-attempt counters are cleared.
+4. After verifying the three sign-ins, delete the temporary secret. Normal pushes use operation **deploy** and never reset the demo passwords.
+
+Alternatively, run directly on the server using its existing environment (the command prompts for the password without echoing it):
+
+```sh
+cd /var/www/nutrilift_v2
+set -a
+source /var/www/secrets/nutrilift.env
+set +a
+/var/www/venv/bin/python manage.py provision_demo_accounts --reset-passwords
+```
+
+Omit `--reset-passwords` when adding missing accounts without changing existing passwords. The SAPA/GOM account is an application programme administrator; this command does not grant Django superuser/staff privileges.

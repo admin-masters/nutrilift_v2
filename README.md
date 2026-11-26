@@ -52,6 +52,14 @@ python3 -m venv .venv
 
 `seed_demo` is idempotent and does not overwrite existing demo records.
 
+To create or repair just the three demo sign-ins and their school/class access:
+
+```sh
+.venv/bin/python manage.py provision_demo_accounts --reset-passwords
+```
+
+Enter the desired demo password at the hidden prompt. This preserves screenings and other accounts. Omitting `--reset-passwords` preserves existing demo passwords. Production provisioning is an explicit, one-time GitHub Actions operation; normal deployments do not create or reset demo accounts. See the [deployment guide](docs/DEPLOYMENT.md#one-time-demo-account-provisioning).
+
 To provision an additional authorised programme user locally:
 
 ```sh
