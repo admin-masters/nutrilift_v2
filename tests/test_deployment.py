@@ -86,6 +86,7 @@ elif name == 'sudo' and args[:2] == ['-n', '/usr/bin/install']:
     }
     # Do not inherit deployment configuration from the developer's shell.
     env.pop('NUTRILIFT_DEPLOY_HEALTH_URL', None)
+    env.pop('NUTRILIFT_DEMO_PASSWORD', None)
 
     def run(operation='deploy', **overrides):
         result = subprocess.run(
@@ -97,6 +98,25 @@ elif name == 'sudo' and args[:2] == ['-n', '/usr/bin/install']:
         return result, calls
 
     return run, app, tmp_path / 'data'
+
+
+def test_demo_accounts_require_explicit_operation_and_password(deployment):
+    run, _, _ = deployment
+    result, calls = run(operation='demo-accounts')
+    assert result.returncode != 0
+    assert 'demo password is required' in result.stderr
+    assert not any(call[:2] == ['git', 'pull'] for call in calls)
+
+
+def test_demo_accounts_are_provisioned_after_backup_and_migrations(deployment):
+    run, _, _ = deployment
+    result, calls = run(operation='demo-accounts', NUTRILIFT_DEMO_PASSWORD='A-test-password@2026')
+    assert result.returncode == 0, result.stdout + result.stderr
+    provision = ['python', 'manage.py', 'provision_demo_accounts', '--password-stdin', '--reset-passwords']
+    assert calls.index(['python', '-']) < calls.index(['python', 'manage.py', 'migrate', '--noinput']) < calls.index(provision)
+    assert calls.index(provision) < calls.index(['sudo', '-n', '/usr/bin/systemctl', 'restart', 'nutrilift.service'])
+    assert 'A-test-password@2026' not in result.stdout + result.stderr
+    assert all('A-test-password@2026' not in arg for call in calls for arg in call)
 
 
 def test_inspection_does_not_pull_migrate_or_restart(deployment):
@@ -198,6 +218,7 @@ def test_deployment_sequence_and_online_sqlite_backup(deployment):
     assert 'Host: nutrilift.example' in curl
     assert calls.index(curl) > positions[-1]
     assert 'Deployment successful' in result.stdout
+    assert not any('provision_demo_accounts' in call for call in calls)
 
 
 @pytest.mark.parametrize('overrides', [

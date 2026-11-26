@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     inputs:
       operation:
-        description: Deploy, inspect, or prepare an empty server's data directory
+        description: Deploy, inspect, prepare storage, or provision demo accounts once
         type: choice
-        options: [deploy, inspect, prepare-data]
+        options: [deploy, inspect, prepare-data, demo-accounts]
         default: deploy
 
 permissions:
@@ -71,13 +71,18 @@ jobs:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_KNOWN_HOSTS: ${{ secrets.EC2_KNOWN_HOSTS }}
           DEPLOY_OPERATION: ${{ inputs.operation || 'deploy' }}
+          NUTRILIFT_DEMO_PASSWORD: ${{ secrets.NUTRILIFT_DEMO_PASSWORD }}
         run: |
           set -Eeuo pipefail
           [[ -n "$EC2_IP" ]] || { echo 'Missing repository secret EC2_IP'; exit 1; }
           [[ -n "$EC2_SSH_KEY" ]] || { echo 'Missing repository secret EC2_SSH_KEY'; exit 1; }
           [[ "$EC2_IP" =~ ^[a-zA-Z0-9][a-zA-Z0-9.:-]*$ ]] || { echo 'EC2_IP must be a hostname or IP address'; exit 1; }
           [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]] || exit 1
-          [[ "$DEPLOY_OPERATION" == deploy || "$DEPLOY_OPERATION" == inspect || "$DEPLOY_OPERATION" == prepare-data ]] || exit 1
+          case "$DEPLOY_OPERATION" in deploy|inspect|prepare-data|demo-accounts) ;; *) exit 1 ;; esac
+          if [[ "$DEPLOY_OPERATION" == demo-accounts && -z "$NUTRILIFT_DEMO_PASSWORD" ]]; then
+            echo 'Set the temporary NUTRILIFT_DEMO_PASSWORD repository secret for this operation.'
+            exit 1
+          fi
           umask 077
           ssh_dir=$(mktemp -d "$RUNNER_TEMP/nutrilift-ssh.XXXXXX")
           trap 'rm -rf "$ssh_dir"' EXIT
@@ -88,8 +93,14 @@ jobs:
             # Trust on first use; set EC2_KNOWN_HOSTS to pin a verified host key.
             ssh-keyscan -T 10 -H "$EC2_IP" > "$ssh_dir/known_hosts"
           fi
-          ssh -i "$ssh_dir/key" \
+          {
+            # Transfer the password over SSH stdin, never as a process argument.
+            if [[ "$DEPLOY_OPERATION" == demo-accounts ]]; then
+              printf 'export NUTRILIFT_DEMO_PASSWORD=%q\n' "$NUTRILIFT_DEMO_PASSWORD"
+            fi
+            cat scripts/deploy_ec2.sh
+          } | ssh -i "$ssh_dir/key" \
             -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20 \
             -o ServerAliveInterval=30 -o ServerAliveCountMax=6 \
             -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_dir/known_hosts" \
-            "ubuntu@$EC2_IP" "bash -s -- $GITHUB_SHA $DEPLOY_OPERATION" < scripts/deploy_ec2.sh
+            "ubuntu@$EC2_IP" "bash -s -- $GITHUB_SHA $DEPLOY_OPERATION"
