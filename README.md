@@ -70,13 +70,16 @@ The command prompts for a password without placing it in shell history.
 
 ## Try the workflows
 
-1. Sign in as teacher. Choose a class, select **Start screening students**, and use a new roll number. Complete the required answers and save. Inspect findings and the next screening date.
-2. Open an existing student, select a screening date, and use **Edit responses** to test an audited correction. Use a due record to test **Re-screen**.
-3. Open **Notify parents** for a red/yellow record. Parent details are kept only in that page's memory. Continuing opens WhatsApp; you decide whether to send. No actual recipient is needed to inspect the message preview.
-4. Sign in as principal to share the school invitation and manage teacher class access.
-5. Sign in as programme admin to filter by state/district/school/class/date, open each total's records, and export CSV.
-6. Open **Programme settings** as admin to configure the PDF guide, screening video, Marathi parent video URLs, message templates, school weekdays and holidays. Supplied content is labelled as a local draft until approved.
-7. Open **Local email outbox** for registration credentials and reminders. The teacher/principal sees their own emails; the programme admin can inspect all local test emails.
+1. Sign in as teacher. Choose a class and **Start screening a student**. The roll-number check finds any existing record before questions appear. A new roll opens blank answers; **Screen next student** returns to a blank, focused roll field in the same class.
+2. Use **Flagged students** for red/yellow results, with pending parent messages first, or **Re-screenings due**. School reports cover the academic year without custom date filters.
+3. **Edit responses** preserves the original date and audit history. **Re-screen** opens a blank, new dated form when due. The latest form controls current follow-up and due status.
+4. **Notify parents** asks only for the parent's name and Indian WhatsApp number (10 digits or +91). The configured Marathi message and relevant video must be approved first. Continuing opens WhatsApp and returns to the same class report. A blocked popup or cancellation leaves the record pending. Reopening counts once and does not move the due date. Parent details are cleared and never submitted to NutriLift.
+5. Use **How to screen students** to open the guide/video popup. Sign in as principal to **Share link with class teachers**, copy the invitation, or open it in WhatsApp. Invitations include the school join link and guide.
+6. Programme reporting opens with Maharashtra totals. Browse district → school → class → roll → screening date, or select a total. **Back to records** preserves filters and pagination. Invalid dates show an inline error while retaining the last valid report.
+
+Operator configuration remains available to authorised programme users at `/settings/` for guide/video URLs, Marathi templates, approval and school-day settings. It is intentionally absent from the reporting navigation. The existing local email backend and restricted `/outbox/` diagnostic endpoint remain available for operators; pilot navigation does not show the outbox. External email delivery requires separate configuration.
+
+See [the 27 November product review](docs/PRODUCT_REVIEW_2026-11-27.md) for the implemented changes and verification.
 
 ## Data and verification
 

@@ -15,18 +15,21 @@ from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.db import transaction
+from django.db.models import Case, IntegerField, Value, When
+from django.db.models.functions import Length
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST
-from .forms import SignInForm, SchoolRegistrationForm, TeacherRegistrationForm, ScreeningForm, SettingsForm
+from .forms import SignInForm, SchoolRegistrationForm, TeacherRegistrationForm, ScreeningForm, SettingsForm, RollNumberForm
 from .models import School, User, ClassGroup, Student, Screening, ScreeningRevision, ProgrammeSettings, LocalEmail, LoginAttempt
 from .schema import LANGUAGES, label
 from .scoring import evaluate
 from .services import allowed_groups, allowed_screenings, latest_screenings, metrics, metric_records, run_reminders
+from .reporting import record_link, report_link, report_scope, return_to_report
 
-METRICS = [('students', 'Students screened', 'Unique students this period'), ('screenings', 'Screenings completed', 'Includes re-screenings'), ('flagged', 'Red flagged students', 'Latest result is red or yellow'), ('opened', 'Parent messages opened', 'WhatsApp opened · delivery unverified'), ('pending', 'Parents to notify', 'Flagged screenings awaiting a message'), ('due', 'Re-screenings due', 'Due today or overdue')]
+METRICS = [('students', 'Students screened', 'Unique students in this report'), ('screenings', 'Screenings completed', 'Includes re-screenings'), ('flagged', 'Flagged students', 'Latest result is red or yellow'), ('opened', 'Parent messages opened in WhatsApp', 'Each screening is counted once'), ('pending', 'Parent messages pending', 'Current flagged screenings awaiting a message'), ('due', 'Re-screenings due', 'Due today or overdue')]
 
 
 class SignInView(LoginView):
@@ -74,84 +77,78 @@ def register(request, token=None):
                 group.teachers.add(user)
             send_mail('Welcome to NutriLift — your sign-in details', f'Registration successful.\nSchool: {school.name}\nEmail: {user.email}\nTemporary password: {password}\nSign in: {settings.PUBLIC_BASE_URL}/login/\nPlease change your password from your account page.', settings.DEFAULT_FROM_EMAIL, [user.email])
         login(request, user)
-        messages.success(request, 'Registration successful. Your sign-in credentials are in your local email outbox. Please change your temporary password.')
+        messages.success(request, 'Registration successful. Your school workspace is ready.')
         return redirect('dashboard')
     return render(request, 'registration/register.html', {'form': form, 'school': school})
 
 
 def filter_scope(request):
-    config = ProgrammeSettings.get()
-    qs = allowed_screenings(request.user).filter(student__academic_year=config.academic_year)
-    groups = allowed_groups(request.user)
-    filters = {k: request.GET.get(k, '').strip() for k in ['state', 'district', 'school', 'school_query', 'group', 'start', 'end', 'q', 'metric']}
-    if request.user.role == 'teacher' and not filters['group'] and 'group' not in request.GET:
-        filters['group'] = str(request.session.get('selected_group', '') or (groups.first().pk if groups.exists() else ''))
-    for key, lookup in [('state', 'student__group__school__state'), ('district', 'student__group__school__district')]:
-        if filters[key]:
-            qs = qs.filter(**{lookup: filters[key]})
-    for key, lookup in [('school', 'student__group__school_id'), ('group', 'student__group_id')]:
-        if filters[key]:
-            if filters[key].isdigit():
-                qs = qs.filter(**{lookup: int(filters[key])})
-            else:
-                qs = qs.none()
-    if filters['group'].isdigit() and groups.filter(pk=int(filters['group'])).exists():
-        request.session['selected_group'] = int(filters['group'])
-    for key, lookup in [('start', 'screened_on__gte'), ('end', 'screened_on__lte')]:
-        if filters[key]:
-            try:
-                day = date.fromisoformat(filters[key])
-                qs = qs.filter(**{lookup: day})
-            except ValueError:
-                messages.error(request, 'Use a valid date for the reporting period.')
-                qs = qs.none()
-    if filters['start'] and filters['end'] and filters['start'] > filters['end']:
-        messages.error(request, 'The start date must be on or before the end date.')
-        qs = qs.none()
-    if filters['q']:
-        qs = qs.filter(student__roll_number__icontains=filters['q'])
-    if filters['school_query']:
-        qs = qs.filter(student__group__school__name__icontains=filters['school_query'])
-    return qs, groups, config, filters
+    scope = report_scope(request, remember=False)
+    return scope['qs'], scope['groups'], scope['config'], scope['filters']
 
 
 @login_required
 def dashboard(request):
-    qs, groups, config, filters = filter_scope(request)
+    scope = report_scope(request)
+    qs, groups, config, filters = (scope[key] for key in ('qs', 'groups', 'config', 'filters'))
     totals = metrics(qs)
-    cards = []
-    for key, title, help_text in METRICS:
-        query = dict(filters, metric=key)
-        cards.append({'key': key, 'title': title, 'hint': help_text, 'value': totals[key], 'url': '?' + urlencode(query)})
+    cards = [{'key': key, 'title': title, 'hint': hint, 'value': totals[key], 'url': report_link(filters, metric=key)} for key, title, hint in METRICS]
     rows = metric_records(qs, filters['metric'])
-    page = Paginator(rows, 20).get_page(request.GET.get('page'))
+    if request.user.role != 'programme':
+        rows = rows.order_by('student__group__grade', 'student__group__section', Length('student__roll_number'), 'student__roll_number', '-screened_on', '-pk')
+    if filters['metric'] == 'flagged':
+        rows = rows.annotate(pending_first=Case(When(message_opened_at__isnull=True, then=Value(0)), default=Value(1), output_field=IntegerField())).order_by('pending_first', Length('student__roll_number'), 'student__roll_number', '-screened_on')
+    page = Paginator(rows, 100 if request.user.role == 'teacher' else 20).get_page(scope['page_number'])
     current_ids = set(latest_screenings(Screening.objects.filter(student_id__in=[s.student_id for s in page])).values_list('id', flat=True))
     for s in page:
+        s.is_current = s.pk in current_ids
         s.is_due = s.pk in current_ids and s.next_screening <= timezone.localdate()
+        s.student_url = record_link('student', s.student_id, scope['report_url'])
+        s.detail_url = record_link('screening', s.pk, scope['report_url'])
+        s.notify_url = record_link('notify', s.pk, scope['report_url'])
+        s.rescreen_url = record_link('rescreen', s.student_id, scope['report_url'])
     schools = School.objects.all() if request.user.role == 'programme' else School.objects.filter(pk=request.user.school_id)
     if filters['state']:
-        schools = schools.filter(state=filters['state'])
+        schools = schools.filter(state__iexact=filters['state'])
     if filters['district']:
-        schools = schools.filter(district=filters['district'])
+        schools = schools.filter(district__iexact=filters['district'])
     if filters['school_query']:
         schools = schools.filter(name__icontains=filters['school_query'])
     selected = groups.filter(pk=int(filters['group'])).first() if filters['group'].isdigit() else None
     breakdown = []
     if request.user.role == 'programme':
-        # District -> school -> class drilldown, retaining the selected period.
+        groups = groups.filter(school__in=schools)
         if filters['school'].isdigit():
-            for g in groups.filter(school_id=int(filters['school'])):
-                breakdown.append({'label': str(g), 'totals': metrics(qs.filter(student__group=g)), 'url': '?' + urlencode(dict(filters, group=g.pk))})
-        elif filters['district']:
+            groups = groups.filter(school_id=int(filters['school']))
+        if filters['school'].isdigit() and not selected:
+            for g in groups:
+                breakdown.append({'label': str(g), 'sub': g.school.name, 'totals': metrics(qs.filter(student__group=g)), 'url': report_link(filters, group=g.pk, q='', metric='')})
+        elif (filters['district'] or filters['school_query']) and not selected and not filters['school']:
             for school in schools:
-                breakdown.append({'label': school.name, 'sub': school.city, 'totals': metrics(qs.filter(student__group__school=school)), 'url': '?' + urlencode(dict(filters, school=school.pk, group=''))})
-        else:
+                breakdown.append({'label': school.name, 'sub': school.district, 'totals': metrics(qs.filter(student__group__school=school)), 'url': report_link(filters, state=school.state, district=school.district, school=school.pk, school_query='', group='', q='', metric='')})
+        elif not selected and not filters['school']:
             for district in schools.values_list('district', flat=True).distinct().order_by('district'):
-                breakdown.append({'label': district, 'totals': metrics(qs.filter(student__group__school__district=district)), 'url': '?' + urlencode(dict(filters, district=district, school='', group=''))})
+                breakdown.append({'label': district, 'totals': metrics(qs.filter(student__group__school__district=district)), 'url': report_link(filters, district=district, school='', group='', q='', metric='')})
     elif request.user.role == 'principal' and not selected:
         for g in groups:
-            breakdown.append({'label': str(g), 'totals': metrics(qs.filter(student__group=g)), 'url': '?' + urlencode(dict(filters, group=g.pk))})
-    return render(request, 'core/dashboard.html', {'config': config, 'filters': filters, 'cards': cards, 'page': page, 'groups': groups, 'schools': schools, 'states': School.objects.order_by('state').values_list('state', flat=True).distinct() if request.user.role == 'programme' else [], 'districts': School.objects.order_by('district').values_list('district', flat=True).distinct() if request.user.role == 'programme' else [], 'selected_group': selected, 'breakdown': breakdown, 'query': urlencode(filters), 'metric_title': dict((k, t) for k, t, _ in METRICS).get(filters['metric'], 'Student records'), 'today': timezone.localdate()})
+            breakdown.append({'label': str(g), 'totals': metrics(qs.filter(student__group=g)), 'url': report_link(filters, group=g.pk, q='', metric='')})
+    districts = School.objects.all()
+    if filters['state']:
+        districts = districts.filter(state__iexact=filters['state'])
+    return render(request, 'core/dashboard.html', {
+        **scope, 'cards': cards, 'totals': totals, 'page': page, 'groups': groups, 'schools': schools,
+        'states': sorted(set(School.objects.values_list('state', flat=True)) | {'Maharashtra'}) if request.user.role == 'programme' else [],
+        'districts': districts.order_by('district').values_list('district', flat=True).distinct() if request.user.role == 'programme' else [],
+        'selected_group': selected, 'breakdown': breakdown, 'query': urlencode(filters),
+        'metric_title': dict((k, t) for k, t, _ in METRICS).get(filters['metric'], 'All students'),
+        'show_records': request.user.role == 'teacher' or bool(filters['group'] or filters['metric'] or filters['q']),
+        'flagged_url': report_link(filters, metric='' if filters['metric'] == 'flagged' else 'flagged'),
+        'due_url': report_link(filters, metric='' if filters['metric'] == 'due' else 'due'),
+        'all_url': report_link(filters, metric='', q=''),
+        'previous_url': report_link(filters, page=page.previous_page_number()) if page.has_previous() else '',
+        'next_url': report_link(filters, page=page.next_page_number()) if page.has_next() else '',
+        'today': timezone.localdate(),
+    })
 
 
 @login_required
@@ -180,13 +177,33 @@ def screening_form(request, group_id=None, screening_id=None, student_id=None):
     group = student.group if student else get_object_or_404(allowed_groups(request.user), pk=group_id)
     config = ProgrammeSettings.get()
     today = timezone.localdate()
+    return_url = return_to_report(request, group.pk)
     if student and student.academic_year != config.academic_year:
         raise PermissionDenied('This academic year is closed.')
     latest = student.screenings.first() if student else None
     if student and not original and latest and latest.next_screening > today:
         messages.info(request, 'The next screening is not due yet. Use Edit responses to correct an earlier form.')
-        return redirect('student', student_id=student.pk)
+        return redirect(record_link('student', student.pk, return_url))
+    checked_roll = ''
+    if not student and not original and request.method == 'GET':
+        roll_form = RollNumberForm(request.GET if 'roll_number' in request.GET else None)
+        previous_student = None
+        previous = None
+        if roll_form.is_bound and roll_form.is_valid():
+            checked_roll = roll_form.cleaned_data['roll_number']
+            previous_student = Student.objects.filter(group=group, academic_year=config.academic_year, roll_number=checked_roll).first()
+            previous = previous_student.screenings.first() if previous_student else None
+        if not checked_roll or previous:
+            if previous:
+                roll_form.fields['roll_number'].widget.attrs.pop('autofocus', None)
+            return render(request, 'core/screening_start.html', {
+                'roll_form': roll_form, 'group': group, 'config': config, 'previous': previous,
+                'previous_student': previous_student, 'is_due': previous and previous.next_screening <= today,
+                'return_url': return_url,
+            })
     initial = dict(original.answers, roll_number=student.roll_number, revision=original.revision, submission_key=uuid.uuid4()) if original else {'submission_key': uuid.uuid4()}
+    if checked_roll:
+        initial['roll_number'] = checked_roll
     if student:
         initial['roll_number'] = student.roll_number
     language = request.GET.get('language', 'English')
@@ -195,6 +212,8 @@ def screening_form(request, group_id=None, screening_id=None, student_id=None):
     form = ScreeningForm(request.POST or None, initial=initial, day=original.screened_on if original else today, editing=bool(original), language=language)
     if student:
         form.fields['roll_number'].disabled = True
+    elif checked_roll:
+        form.fields['roll_number'].widget.attrs['readonly'] = True
     if request.method == 'POST' and form.is_valid():
         with transaction.atomic():
             if original:
@@ -209,23 +228,25 @@ def screening_form(request, group_id=None, screening_id=None, student_id=None):
                     original.revision += 1
                     original.save()
                     messages.success(request, 'Responses corrected. The original screening date and message history are preserved.')
-                    return redirect('screening', screening_id=original.pk)
+                    return redirect(record_link('screening', original.pk, return_url))
             else:
                 existing = Screening.objects.filter(submission_key=form.cleaned_data['submission_key']).first()
                 if existing:
                     if existing.performed_by_id != request.user.pk or existing.student.group_id != group.pk:
                         raise PermissionDenied
-                    return redirect('screening', screening_id=existing.pk)
+                    return redirect(record_link('screening', existing.pk, return_url))
                 student, _ = Student.objects.get_or_create(group=group, academic_year=config.academic_year, roll_number=form.cleaned_data['roll_number'])
                 latest = student.screenings.first()
                 if latest and latest.next_screening > today:
                     form.add_error('roll_number', 'This student already has a screening and is not due yet. Open the student record to edit responses.')
+                elif latest and student_id is None:
+                    form.add_error('roll_number', 'This student already has a screening. Open the student record and choose Re-screen to create a new dated form.')
                 else:
                     answers = form.answers()
                     saved = Screening.objects.create(student=student, performed_by=request.user, answers=answers, submission_key=form.cleaned_data['submission_key'], **evaluate(answers, today))
                     messages.success(request, 'Screening saved successfully.')
-                    return redirect('screening', screening_id=saved.pk)
-    return render(request, 'core/screening_form.html', {'form': form, 'group': group, 'original': original, 'student': student, 'config': config, 'languages': LANGUAGES, 'language': language, 'screened_on': original.screened_on if original else today})
+                    return redirect(record_link('screening', saved.pk, return_url))
+    return render(request, 'core/screening_form.html', {'form': form, 'group': group, 'original': original, 'student': student, 'config': config, 'languages': LANGUAGES, 'language': language, 'screened_on': original.screened_on if original else today, 'return_url': return_url, 'checked_roll': checked_roll})
 
 
 @login_required
@@ -233,17 +254,18 @@ def student_detail(request, student_id):
     student = get_object_or_404(Student.objects.select_related('group__school'), pk=student_id, group__in=allowed_groups(request.user))
     screenings = student.screenings.select_related('performed_by')
     latest = screenings.first()
-    return render(request, 'core/student.html', {'student': student, 'screenings': screenings, 'latest': latest, 'is_due': latest and latest.next_screening <= timezone.localdate()})
+    return render(request, 'core/student.html', {'student': student, 'screenings': screenings, 'latest': latest, 'is_due': latest and latest.next_screening <= timezone.localdate(), 'return_url': return_to_report(request, student.group_id)})
 
 
 @login_required
 def screening_detail(request, screening_id):
     screening = get_object_or_404(allowed_screenings(request.user), pk=screening_id)
+    latest = screening.student.screenings.first()
     rows = [{'label': label(key), 'value': str(value).replace('_', ' ').capitalize()} for key, value in screening.answers.items()]
     revisions = []
     for r in screening.revisions.select_related('changed_by').order_by('-changed_at'):
         revisions.append({'record': r, 'rows': [{'label': label(k), 'value': v} for k, v in r.previous['answers'].items()]})
-    return render(request, 'core/screening_detail.html', {'screening': screening, 'rows': rows, 'revisions': revisions})
+    return render(request, 'core/screening_detail.html', {'screening': screening, 'rows': rows, 'revisions': revisions, 'latest': latest, 'is_current': screening.pk == latest.pk, 'return_url': return_to_report(request, screening.student.group_id)})
 
 
 @login_required
@@ -251,6 +273,10 @@ def notify_parent(request, screening_id):
     if request.user.role != 'teacher':
         raise PermissionDenied
     screening = get_object_or_404(allowed_screenings(request.user), pk=screening_id, result__in=['red', 'yellow'])
+    return_url = return_to_report(request, screening.student.group_id)
+    if not screening.message_opened_at and screening.student.screenings.first().pk != screening.pk:
+        messages.info(request, 'A newer screening is available. Use the current result for parent follow-up.')
+        return redirect(record_link('student', screening.student_id, return_url))
     config = ProgrammeSettings.get()
     group = screening.student.group
     translations = {'Severe thinness': 'अतिशय कमी बीएमआय', 'Thinness': 'कमी बीएमआय', 'Obesity': 'लठ्ठपणाशी संबंधित बीएमआय', 'Overweight': 'जास्त वजनाशी संबंधित बीएमआय'}
@@ -260,8 +286,9 @@ def notify_parent(request, screening_id):
             findings.append(translations[f['label']])
         else:
             findings.append(label(f['key'], 'Marathi'))
-    payload = {'template': config.red_message if screening.result == 'red' else config.yellow_message, 'values': {'school': group.school.name, 'class': str(group.grade), 'section': group.section, 'roll': screening.student.roll_number, 'findings': '; '.join(findings), 'next_date': screening.next_screening.strftime('%d/%m/%Y'), 'video': config.red_video_url if screening.result == 'red' else config.yellow_video_url}, 'record_url': reverse('mark_opened', args=[screening.pk]), 'return_url': reverse('screening', args=[screening.pk])}
-    return render(request, 'core/notify.html', {'screening': screening, 'payload': payload, 'config': config})
+    payload = {'template': config.red_message if screening.result == 'red' else config.yellow_message, 'values': {'school': group.school.name, 'class': str(group.grade), 'section': group.section, 'roll': screening.student.roll_number, 'findings': '; '.join(findings), 'next_date': screening.next_screening.strftime('%d/%m/%Y'), 'video': config.red_video_url if screening.result == 'red' else config.yellow_video_url}, 'record_url': reverse('mark_opened', args=[screening.pk]), 'return_url': return_url}
+    payload['ready'] = bool(config.content_approved and payload['template'].strip() and payload['values']['video'])
+    return render(request, 'core/notify.html', {'screening': screening, 'payload': payload, 'config': config, 'return_url': return_url})
 
 
 @login_required
@@ -276,10 +303,12 @@ def mark_opened(request, screening_id):
         s = get_object_or_404(allowed_screenings(request.user).select_for_update(), pk=screening_id)
         if s.result == 'green':
             return JsonResponse({'error': 'No parent message is required.'}, status=409)
+        if not s.message_opened_at and s.student.screenings.first().pk != s.pk:
+            return JsonResponse({'error': 'A newer screening is available. Use its current result.'}, status=409)
         if not s.message_opened_at:
             s.message_opened_at, s.message_opened_by = timezone.now(), request.user
             s.save(update_fields=['message_opened_at', 'message_opened_by'])
-    return JsonResponse({'status': 'Parent notified', 'delivery_verified': False})
+    return JsonResponse({'status': 'Opened in WhatsApp', 'delivery_verified': False})
 
 
 @login_required
@@ -288,8 +317,9 @@ def invite(request):
         raise PermissionDenied
     school = request.user.school
     url = settings.PUBLIC_BASE_URL + reverse('teacher_register', args=[school.invitation_token])
-    guide_url = settings.PUBLIC_BASE_URL + reverse('guide')
-    invitation = f'Hello, please register as a class teacher for the NutriLift School Screening Programme at {school.name}. Choose your class and section when you register. We’ll email your login details.\nRegister here: {url}\nHow to screen students: {guide_url}'
+    config = ProgrammeSettings.get()
+    guide_url = config.guide_url or settings.PUBLIC_BASE_URL + reverse('guide')
+    invitation = f'Hello, please register as a class teacher for the NutriLift School Screening Programme at {school.name}. Choose your class and section when you register.\nSchool registration link: {url}\nScreening guide: {guide_url}'
     return render(request, 'core/invite.html', {'school': school, 'invitation': invitation, 'invitation_url': url})
 
 

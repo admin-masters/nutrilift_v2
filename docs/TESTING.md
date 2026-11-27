@@ -1,4 +1,12 @@
-# Local verification — 24 November 2026
+# Verification
+
+## Product review — 27 November 2026
+
+**142 tests passed**, Django checks passed and no model migrations were required. Chromium checks covered the updated teacher, principal and programme flows at 360 × 640 and programme reporting at 1280 × 900. See [the review verification record](PRODUCT_REVIEW_2026-11-27.md#verification) for scope, observed outcomes and limits.
+
+The notes below record the original 24 November build. The review supersedes its message-preview, navigation and pending-task behavior. Current deployment setup is documented in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Original local verification — 24 November 2026
 
 ## Automated results
 

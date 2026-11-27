@@ -4,11 +4,44 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const clearPrivate = () => $$('[data-private]').forEach(input => { input.value = ''; });
 window.addEventListener('pagehide', clearPrivate);
 window.addEventListener('pageshow', event => { if (event.persisted) clearPrivate(); });
+$$('[data-toggle-password]').forEach(button => button.addEventListener('click', () => {
+  const input = document.getElementById(button.dataset.togglePassword);
+  const visible = input.type === 'password';
+  input.type = visible ? 'text' : 'password';
+  button.textContent = visible ? 'Hide' : 'Show';
+  button.setAttribute('aria-pressed', String(visible));
+}));
+$$('[data-guide-dialog]').forEach(link => link.addEventListener('click', event => {
+  const dialog = $('#screening-guide');
+  if (dialog && typeof dialog.showModal === 'function') {
+    event.preventDefault();
+    dialog.showModal();
+  }
+}));
+$$('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
+$$('dialog').forEach(dialog => dialog.addEventListener('click', event => {
+  if (event.target === dialog) {
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  }
+}));
+$$('[data-report-level]').forEach(input => input.addEventListener('change', () => {
+  const dependents = {state:['district','school','group'], district:['school','group'], school_query:['school','group'], school:['group']};
+  (dependents[input.dataset.reportLevel] || []).forEach(name => {
+    const field = $(`[name="${name}"]`, input.form);
+    if (field) field.value = '';
+  });
+}));
 $$('[data-print]').forEach(button => button.addEventListener('click', () => window.print()));
 $$('[data-copy]').forEach(button => button.addEventListener('click', async () => {
   const value = document.getElementById(button.dataset.copy).value;
   try { await navigator.clipboard.writeText(value); $('#copy-status').textContent = ' Copied to clipboard.'; }
-  catch { $('#copy-status').textContent = ' Select the text and copy it manually.'; }
+  catch {
+    const field = document.getElementById(button.dataset.copy);
+    if (field.closest('details')) field.closest('details').open = true;
+    field.focus(); field.select();
+    $('#copy-status').textContent = ' Select the invitation text and copy it manually.';
+  }
 }));
 
 const screening = $('#screening-form');
@@ -82,24 +115,29 @@ if (screening) {
   });
 }
 
-const phoneNumber = value => value.replace(/[\s()+-]/g,'');
-const validPhone = value => /^[1-9]\d{7,14}$/.test(value);
+function normaliseIndianMobile(value) {
+  const compact = value.trim().replace(/[\s()-]/g, '');
+  if (/^[6-9]\d{9}$/.test(compact)) return `91${compact}`;
+  const international = compact.match(/^\+?91([6-9]\d{9})$/);
+  return international ? `91${international[1]}` : null;
+}
 const notify = $('#notify-form');
 if (notify) {
   const data = JSON.parse($('#notify-data').textContent);
+  const openButton = $('#open-whatsapp');
+  openButton.disabled = !data.ready;
   let openedInThisPage = false;
   const message = () => {
-    const values = {...data.values, parent:$('#parent-name').value.trim() || 'पालक'};
+    const values = {...data.values, parent:$('#parent-name').value.trim()};
     return data.template.replace(/\{(parent|school|class|section|roll|findings|next_date|video)\}/g, (_, key) => values[key] ?? '');
   };
-  const preview = () => { $('#message-preview').textContent = message(); };
-  $('#parent-name').addEventListener('input', preview); preview();
   const saveStatus = async () => {
     if (!openedInThisPage) return;
     try {
       const response = await fetch(data.record_url,{method:'POST',credentials:'same-origin',headers:{'X-CSRFToken':$('[name="csrfmiddlewaretoken"]',notify).value,'Content-Type':'application/json'},body:'{}'});
       if (!response.ok) throw new Error('status');
-      $('#notify-status').className='flash success'; $('#notify-status').textContent='Parent notified. The WhatsApp window opened; delivery remains unverified.'; $('#retry-status').hidden=true;
+      $('#retry-status').hidden=true;
+      location.assign(data.return_url);
     } catch {
       $('#notify-status').className='flash error'; $('#notify-status').textContent='WhatsApp opened, but NutriLift could not save the status. Retry saving below.'; $('#retry-status').hidden=false;
     }
@@ -107,27 +145,33 @@ if (notify) {
   $('#retry-status').addEventListener('click',saveStatus);
   notify.addEventListener('submit', async event => {
     event.preventDefault();
-    const phone=phoneNumber($('#parent-phone').value);
-    if (!validPhone(phone)) { $('#notify-status').textContent='Enter a valid WhatsApp number including country code (8–15 digits).'; return; }
+    if (!data.ready) { $('#notify-status').textContent='The programme team must approve the message and video before sharing.'; return; }
+    if (openedInThisPage) return;
+    const phone=normaliseIndianMobile($('#parent-phone').value);
+    if (!phone) { $('#notify-status').textContent='Enter a 10-digit Indian mobile number, with or without +91.'; $('#parent-phone').focus(); return; }
     const url=`https://wa.me/${phone}?text=${encodeURIComponent(message())}`;
     const popup=window.open('about:blank','_blank');
     if (!popup) { $('#notify-status').textContent='The browser blocked WhatsApp. Allow pop-ups and try again. The status remains pending.'; return; }
     try { popup.opener=null; popup.location.replace(url); }
     catch { popup.close(); $('#notify-status').textContent='WhatsApp could not be opened. The status remains pending.'; return; }
     openedInThisPage=true;
-    clearPrivate(); preview();
+    openButton.disabled = true;
+    clearPrivate();
     await saveStatus();
   });
-  $$('[data-clear-private]').forEach(a=>a.addEventListener('click',()=>{clearPrivate();preview();}));
-  window.addEventListener('pagehide',()=>{ $('#message-preview').textContent=''; });
+  $$('[data-clear-private]').forEach(a=>a.addEventListener('click',clearPrivate));
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) { openedInThisPage=false; openButton.disabled=!data.ready; $('#retry-status').hidden=true; }
+  });
 }
 
 const inviteForm=$('#invite-form');
 if(inviteForm) inviteForm.addEventListener('submit',event=>{
   event.preventDefault();
-  const phone=phoneNumber($('#invite-phone').value);
-  if(!validPhone(phone)){ $('#invite-status').textContent='Enter a valid number including country code.'; return; }
-  const text=$('#invitation').value.replace('Hello,',`Hello ${$('#invite-name').value.trim()},`);
+  const phone=normaliseIndianMobile($('#invite-phone').value);
+  if(!phone){ $('#invite-status').textContent='Enter a 10-digit Indian mobile number, with or without +91.'; $('#invite-phone').focus(); return; }
+  const name=$('#invite-name').value.trim();
+  const text=name ? $('#invitation').value.replace('Hello,',`Hello ${name},`) : $('#invitation').value;
   const popup=window.open('about:blank','_blank');
   if(!popup){$('#invite-status').textContent='Please allow pop-ups and try again.';return;}
   popup.opener=null;popup.location.replace(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`);clearPrivate();
