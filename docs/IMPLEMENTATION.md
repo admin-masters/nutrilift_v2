@@ -17,7 +17,7 @@ The PDF specifies the release workflow. The workbook specifies the screening que
 - New registrations become active immediately and are signed in. A generated password and login URL are written to the account's local email outbox. Password changes and password reset links work locally; programme admins can inspect the outbox during testing.
 - Principal invitations and parent messages open WhatsApp only on a deliberate button click. The app does not press Send. Popup blocks leave the status pending. A successful browser window/navigation launch records one opened event per screening. Cross-origin restrictions prevent proving WhatsApp delivery or successful loading, which is never claimed.
 - Parent contact fields have no form names, are never submitted to the application, use no persistent browser storage, and are cleared after launch or departure. The opened endpoint accepts only an empty body or `{}`. The prepared message and recipient necessarily pass to WhatsApp when the teacher chooses to open it.
-- The built-in PDF is a quick guide derived from the supplied workbook. Guide/video URLs and Marathi message templates can be configured by the programme admin. Draft content is labelled. No approved video assets were supplied or fabricated.
+- The built-in PDF is a quick guide derived from the supplied workbook. Guide/video URLs and Marathi message templates can be configured by the programme admin at `/settings/`. Parent sharing stays disabled until the relevant template and video are configured and approved. No approved video assets were supplied or fabricated.
 - The initial build was local-only. On 25 November 2026 the user authorised publishing to `admin-masters/nutrilift_v2` on `Production` and creating the `gopalakrishnanplus-creator` fork with `Staging` for future modifications. CI/CD and AWS deployment remain a separate phase.
 
 ## Counting and record integrity
@@ -26,9 +26,9 @@ The six dashboard figures use one shared service for all roles and drilldown lev
 
 1. Students screened: distinct student identities with at least one form in the selected period.
 2. Screenings completed: individual forms, including re-screenings.
-3. Red flagged students: students whose latest form in the period is red or yellow.
+3. Flagged students: students whose latest form in the period is red or yellow.
 4. Parent messages opened: forms with an opened timestamp. Historical opened events survive corrections to green, as required by the PRD.
-5. Parent messages pending: red/yellow forms without an opened timestamp. A later re-screening does not silently erase an earlier pending message.
+5. Parent messages pending: current red/yellow forms without an opened timestamp. Following the 27 November review, a newer screening supersedes the predecessor's pending task; the older form and its message history remain available. A historical period never turns a superseded form back into a current task.
 6. Re-screenings due: latest student forms due today/overdue, excluding any predecessor closed by a newer form even if that successor is outside the filtered period.
 
 Calendar-month due dates clamp to the month's final day where necessary. Edits retain the screening date, recompute findings and due dates, preserve opened history, and append an immutable snapshot with actor/time/reason. Revision checks reject stale edits. Unique submission UUIDs and database transactions prevent retry duplication. Re-screening starts with blank answers and retains the roll/class/year. A second fresh form is rejected until due; corrections use Edit responses.

@@ -206,7 +206,7 @@ def test_rescreen_new_blank_form_and_historical_metrics(env):
     day=add_months(timezone.localdate(),-4);a=sample_answers(day);a['pallor']='yes';s=create_screening(env,day=day,answers=a)
     response=env['client'].get(reverse('rescreen',args=[s.student_id]));assert response.context['form']['dob'].value() is None
     response=env['client'].post(reverse('rescreen',args=[s.student_id]),payload());assert response.status_code==302
-    totals=metrics(Screening.objects.all());assert totals=={'students':1,'screenings':2,'flagged':0,'opened':0,'pending':1,'due':0}
+    totals=metrics(Screening.objects.all());assert totals=={'students':1,'screenings':2,'flagged':0,'opened':0,'pending':0,'due':0}
     assert metrics(Screening.objects.filter(screened_on=day))['flagged']==1
     assert metrics(Screening.objects.filter(screened_on=day))['due']==0
 

@@ -46,6 +46,21 @@ class TeacherRegistrationForm(RegistrationForm):
         return self.cleaned_data['section'].upper()
 
 
+def normalise_roll_number(value):
+    value = value.strip().upper()
+    return str(int(value)) if value.isdigit() else value
+
+
+class RollNumberForm(forms.Form):
+    roll_number = forms.RegexField(
+        r'^[A-Za-z0-9][A-Za-z0-9-]{0,29}$', max_length=30, label='Roll number',
+        widget=forms.TextInput(attrs={'autofocus': True, 'autocomplete': 'off'}),
+    )
+
+    def clean_roll_number(self):
+        return normalise_roll_number(self.cleaned_data['roll_number'])
+
+
 class ScreeningForm(forms.Form):
     roll_number = forms.RegexField(r'^[A-Za-z0-9][A-Za-z0-9-]{0,29}$', label='Roll number', max_length=30)
     dob = forms.DateField(label='Date of birth', widget=forms.DateInput(attrs={'type': 'date'}))
@@ -92,8 +107,7 @@ class ScreeningForm(forms.Form):
         self.sections = [{'code': code, 'title': title, 'fields': [self[k] for k in keys]} for code, title, keys in self.groups]
 
     def clean_roll_number(self):
-        value = self.cleaned_data['roll_number'].upper()
-        return str(int(value)) if value.isdigit() else value
+        return normalise_roll_number(self.cleaned_data['roll_number'])
 
     def clean(self):
         a = super().clean()

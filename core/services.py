@@ -35,7 +35,7 @@ def metrics(qs, today=None):
         'screenings': qs.count(),
         'flagged': latest.filter(result__in=['red', 'yellow']).count(),
         'opened': qs.filter(message_opened_at__isnull=False).count(),
-        'pending': qs.filter(result__in=['red', 'yellow'], message_opened_at__isnull=True).count(),
+        'pending': latest.filter(pk__in=current_ids, result__in=['red', 'yellow'], message_opened_at__isnull=True).count(),
         'due': latest.filter(pk__in=current_ids, next_screening__lte=today).count(),
     }
 
@@ -45,7 +45,7 @@ def metric_records(qs, metric, today=None):
     if metric == 'screenings':
         return qs
     if metric == 'pending':
-        return qs.filter(result__in=['red', 'yellow'], message_opened_at__isnull=True)
+        return latest_screenings(qs).filter(pk__in=latest_screenings(Screening.objects.all()).values('pk'), result__in=['red', 'yellow'], message_opened_at__isnull=True)
     if metric == 'opened':
         return qs.filter(message_opened_at__isnull=False)
     latest = latest_screenings(qs)
@@ -72,7 +72,7 @@ def run_reminders(day=None):
     sent = 0
     for teacher in User.objects.filter(role='teacher', is_active=True):
         qs = allowed_screenings(teacher).filter(student__academic_year=config.academic_year)
-        pending = qs.filter(result__in=['red', 'yellow'], message_opened_at__isnull=True)
+        pending = metric_records(qs, 'pending')
         due = latest_screenings(qs).filter(next_screening__lte=day)
         first_pending = any(next_school_day(s.screened_on, config) == day for s in pending)
         new_due = due.filter(next_screening=day).exists()
